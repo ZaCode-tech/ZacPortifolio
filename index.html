@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Portfólio | Seu Nome</title>
+  <style>
+    /* RESET & VARIÁVEIS DE COR */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent-color: #38bdf8;
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-color: #334155;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* CONTAINER PRINCIPAL */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* HERO / CABEÇALHO */
+    header {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p.subtitle {
+      font-size: 1.25rem;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    header p.bio {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--accent-color);
+      color: #0f172a;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    /* SEÇÕES */
+    section {
+      margin-top: 4rem;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    /* GRID DE PROJETOS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background-color: #0f172a;
+      color: var(--accent-color);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* HABILIDADES */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;;
+    }
+
+    .skill-badge {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* RODAPÉ */
+    footer {
+      text-align: center;
+      margin-top: 5rem;
+      padding: 2rem 0;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- HERO SECTION -->
+    <header>
+      <h1>Seu Nome Aqui</h1>
+      <p class="subtitle">Desenvolvedor(a) / Designer / Especialista</p>
+      <p class="bio">
+        Bem-vindo(a) ao meu portfólio! Sou apaixonado(a) por resolver problemas e criar soluções eficientes, focadas na melhor experiência do usuário.
+      </p>
+      <div class="social-links">
+        <a href="https://github.com/seu-usuario" target="_blank" class="btn btn-outline">GitHub</a>
+        <a href="https://linkedin.com/in/seu-usuario" target="_blank" class="btn btn-outline">LinkedIn</a>
+        <a href="mailto:seu-email@email.com" class="btn">Contato</a>
+      </div>
+    </header>
+
+    <!-- PROJETOS -->
+    <section id="projetos">
+      <h2>Projetos em Destaque</h2>
+      <div class="projects-grid">
+
+        <!-- Projeto 1 -->
+        <div class="project-card">
+          <div>
+            <h3>Projeto Um</h3>
+            <p>Breve descrição do projeto, qual problema ele resolveu e qual foi o resultado atingido.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+          <a href="#" target="_blank">Ver Projeto &rarr;</a>
+        </div>
+
+        <!-- Projeto 2 -->
+        <div class="project-card">
+          <div>
+            <h3>Projeto Dois</h3>
+            <p>Breve descrição do segundo projeto com foco na arquitetura ou tecnologia utilizada.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+          <a href="#" target="_blank">Ver Projeto &rarr;</a>
+        </div>
+
+        <!-- Projeto 3 -->
+        <div class="project-card">
+          <div>
+            <h3>Projeto Três</h3>
+            <p>Outro trabalho importante com link direto para o repositório ou demonstração ao vivo.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">API</span>
+            </div>
+          </div>
+          <a href="#" target="_blank">Ver Projeto &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+      <h2>Habilidades e Tecnologias</h2>
+      <div class="skills-list">
+        <span class="skill-badge">HTML5 & CSS3</span>
+        <span class="skill-badge">JavaScript (ES6+)</span>
+        <span class="skill-badge">Git & GitHub</span>
+        <span class="skill-badge">React</span>
+        <span class="skill-badge">Node.js</span>
+        <span class="skill-badge">SQL / Banco de Dados</span>
+      </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+      <p>&copy; 2026 Seu Nome. Hospedado no GitHub Pages.</p>
+    </footer>
+  </div>
+
+</body>
+</html>
