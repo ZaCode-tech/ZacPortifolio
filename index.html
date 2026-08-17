@@ -16,7 +16,7 @@
   <script>
     if (window.Sentry) {
       Sentry.init({
-        dsn: "https://examplePublicKey@o0.ingest.sentry.io/0", // Substitua pelo seu DSN do Sentry
+        dsn: "https://examplePublicKey@o0.ingest.sentry.io/0",
         tracesSampleRate: 1.0,
         replaysSessionSampleRate: 0.1,
         replaysOnErrorSampleRate: 1.0,
@@ -64,7 +64,6 @@
   </script>
 
   <style>
-    /* Motion Easing Base */
     .motion-smooth {
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -95,10 +94,10 @@
     </div>
   </nav>
 
-  <!-- Content Container (Com Skeleton State inicial) -->
+  <!-- Container Principal -->
   <main class="pt-28 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- SKELETON LOADER (Exibido enquanto simula busca de dados/componentes) -->
+    <!-- SKELETON LOADER -->
     <div id="skeleton-container" class="space-y-12 animate-pulse-slow">
       <div class="flex flex-col md:flex-row justify-between gap-8 items-center">
         <div class="w-full md:w-2/3 space-y-4">
@@ -116,7 +115,7 @@
       </div>
     </div>
 
-    <!-- CONTEÚDO REAL (Carregado com Smooth Animation de Entrada) -->
+    <!-- CONTEÚDO REAL -->
     <div id="real-content" class="hidden opacity-0 animate-fade-in">
       
       <!-- Hero Section -->
@@ -124,7 +123,7 @@
         <div class="space-y-6 md:w-2/3 animate-slide-up">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
             <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
-            Análise e Desenvolvimento de Sistemas (UVA)[span_0](start_span)[span_0](end_span)
+            Análise e Desenvolvimento de Sistemas (UVA)
           </div>
           <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
             Isac Gonçalves da Silva <br>
@@ -133,7 +132,7 @@
             </span>
           </h1>
           <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-            Profissional focado em Suporte Técnico, Infraestrutura (CPD), automação de processos em Python e desenvolvimento de softwares interativos[span_1](start_span)[span_1](end_span).
+            Profissional focado em Suporte Técnico, Infraestrutura (CPD), automação de processos em Python e desenvolvimento de softwares interativos.
           </p>
           <div class="flex flex-wrap gap-4 pt-2">
             <a href="#projetos" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm motion-smooth shadow-lg shadow-brand-600/30 hover:-translate-y-1">
@@ -152,10 +151,10 @@
                 <i class="fa-solid fa-terminal"></i>
               </div>
               <h3 class="text-lg font-bold text-white">Isac G. Silva</h3>
-              <p class="text-xs text-slate-400 mt-1">Nova Iguaçu — RJ[span_2](start_span)[span_2](end_span)</p>
+              <p class="text-xs text-slate-400 mt-1">Nova Iguaçu — RJ</p>
               <div class="mt-4 flex gap-2">
-                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Python[span_3](start_span)[span_3](end_span)</span>
-                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">CPD[span_4](start_span)[span_4](end_span)</span>
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Python</span>
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">CPD</span>
                 <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Web</span>
               </div>
             </div>
@@ -175,10 +174,10 @@
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Programação & Automação</h3>
             <ul class="text-xs text-slate-400 space-y-2">
-              <li>• Python Avançado[span_5](start_span)[span_5](end_span)</li>
-              <li>• Scripts em CMD e Macros para Automação[span_6](start_span)[span_6](end_span)</li>
-              <li>• Lógica e Desenvolvimento Mobile[span_7](start_span)[span_7](end_span)</li>
-              <li>• Automação de notificações/mensagens (WhatsApp)[span_8](start_span)[span_8](end_span)</li>
+              <li>• Python Avançado</li>
+              <li>• Scripts em CMD e Macros para Automação</li>
+              <li>• Lógica e Desenvolvimento Mobile</li>
+              <li>• Automação de notificações/mensagens (WhatsApp)</li>
             </ul>
           </div>
 
@@ -188,10 +187,10 @@
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Suporte & CPD</h3>
             <ul class="text-xs text-slate-400 space-y-2">
-              <li>• Montagem e Manutenção de Hardware[span_9](start_span)[span_9](end_span)</li>
-              <li>• Análise de Componentes e Processadores[span_10](start_span)[span_10](end_span)</li>
-              <li>• Suporte operacional a redes e sistemas[span_11](start_span)[span_11](end_span)</li>
-              <li>• Gestão de centro de dados e redes[span_12](start_span)[span_12](end_span)</li>
+              <li>• Montagem e Manutenção de Hardware</li>
+              <li>• Análise de Componentes e Processadores</li>
+              <li>• Suporte operacional a redes e sistemas</li>
+              <li>• Gestão de centro de dados e redes</li>
             </ul>
           </div>
 
@@ -201,16 +200,16 @@
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Gestão & Estoque</h3>
             <ul class="text-xs text-slate-400 space-y-2">
-              <li>• Excel Avançado & Planilhas Gerenciais[span_13](start_span)[span_13](end_span)</li>
-              <li>• Conferência e Controle de Estoque[span_14](start_span)[span_14](end_span)</li>
-              <li>• Pacote Office Avançado[span_15](start_span)[span_15](end_span)</li>
-              <li>• Rotinas Administrativas e Financeiras[span_16](start_span)[span_16](end_span)</li>
+              <li>• Excel Avançado & Planilhas Gerenciais</li>
+              <li>• Conferência e Controle de Estoque</li>
+              <li>• Pacote Office Avançado</li>
+              <li>• Rotinas Administrativas e Financeiras</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- Projetos com Lazy Loading nas chamadas -->
+      <!-- Projetos -->
       <section id="projetos" class="py-16 border-t border-slate-800/80">
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Projetos Publicados</h2>
         <p class="text-slate-400 text-sm mb-10">Aplicações com interfaces e automações ativas.</p>
@@ -266,22 +265,22 @@
         <div class="space-y-6">
           <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
             <div class="flex justify-between items-start mb-2">
-              <h3 class="font-bold text-white text-base">Auxiliar de Escritório (CPD e Suporte de TI)[span_17](start_span)[span_17](end_span)</h3>
-              <span class="text-xs text-brand-400 font-semibold bg-brand-500/10 px-2.5 py-1 rounded-full">Tids Papelaria[span_18](start_span)[span_18](end_span)</span>
+              <h3 class="font-bold text-white text-base">Auxiliar de Escritório (CPD e Suporte de TI)</h3>
+              <span class="text-xs text-brand-400 font-semibold bg-brand-500/10 px-2.5 py-1 rounded-full">Tids Papelaria</span>
             </div>
             <p class="text-xs text-slate-400 leading-relaxed">
-              Atuação no CPD com organização de documentos, controle/conferência de estoque e suporte técnico de TI para manter em funcionamento computadores, redes e sistemas da empresa[span_19](start_span)[span_19](end_span).
+              Atuação no CPD com organização de documentos, controle/conferência de estoque e suporte técnico de TI para manter em funcionamento computadores, redes e sistemas da empresa.
             </p>
           </div>
 
           <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
             <div class="flex justify-between items-start mb-2">
-              <h3 class="font-bold text-white text-base">Operador de Loja / Apoio CPD[span_20](start_span)[span_20](end_span)</h3>
-              <span class="text-xs text-slate-400">12/2021 — 08/2024[span_21](start_span)[span_21](end_span)</span>
+              <h3 class="font-bold text-white text-base">Operador de Loja / Apoio CPD</h3>
+              <span class="text-xs text-slate-400">12/2021 — 08/2024</span>
             </div>
-            <p class="text-xs text-brand-400 font-medium mb-1">Vianense Supermercado[span_22](start_span)[span_22](end_span)</p>
+            <p class="text-xs text-brand-400 font-medium mb-1">Vianense Supermercado</p>
             <p class="text-xs text-slate-400 leading-relaxed">
-              Apoio direto ao setor administrativo e ao CPD[span_23](start_span)[span_23](end_span). Inserção de dados em sistema, organização documental, além de controle e auditoria prática de estoque[span_24](start_span)[span_24](end_span).
+              Apoio direto ao setor administrativo e ao CPD. Inserção de dados em sistema, organização documental, além de controle e auditoria prática de estoque.
             </p>
           </div>
         </div>
@@ -289,7 +288,7 @@
 
       <!-- Rodapé -->
       <footer class="pt-12 border-t border-slate-800 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Isac Gonçalves da Silva. Todos os direitos reservados.[span_25](start_span)[span_25](end_span)</p>
+        <p>&copy; 2026 Isac Gonçalves da Silva. Todos os direitos reservados.</p>
       </footer>
 
     </div>
@@ -302,13 +301,11 @@
       const skeleton = document.getElementById('skeleton-container');
       const content = document.getElementById('real-content');
 
-      // Animação da barra de progresso
       bar.style.width = '70%';
 
       setTimeout(() => {
         bar.style.width = '100%';
         
-        // Transição suave de saída do Skeleton e entrada do Conteúdo
         setTimeout(() => {
           bar.style.opacity = '0';
           skeleton.classList.add('animate-fade-out');
