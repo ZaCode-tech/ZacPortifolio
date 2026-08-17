@@ -1,297 +1,328 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isac Gonçalves | Portfólio Profissional</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#ecfdf5',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            900: '#064e3b',
-                        }
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isac Gonçalves | Software Developer & Automação</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Sentry Observability SDK Integration -->
+  <script src="https://browser.sentry-cdn.com/7.80.0/bundle.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (window.Sentry) {
+      Sentry.init({
+        dsn: "https://examplePublicKey@o0.ingest.sentry.io/0", // Substitua pelo seu DSN do Sentry
+        tracesSampleRate: 1.0,
+        replaysSessionSampleRate: 0.1,
+        replaysOnErrorSampleRate: 1.0,
+      });
+    }
+  </script>
+
+  <!-- Configuração do Tailwind & Custom Motion Animations -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              900: '#064e3b',
             }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-out': 'fadeOut 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'scale(0.98)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+            fadeOut: {
+              '0%': { opacity: '1' },
+              '100%': { opacity: '0' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
         }
-    </script>
+      }
+    }
+  </script>
+
+  <style>
+    /* Motion Easing Base */
+    .motion-smooth {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Navegação -->
-    <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="#" class="text-xl font-bold bg-gradient-to-r from-brand-500 to-cyan-400 bg-clip-text text-transparent">
-                    &lt;Isac.Dev /&gt;
-                </a>
-                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
-                    <a href="#sobre" class="hover:text-brand-500 transition-colors">Sobre</a>
-                    <a href="#habilidades" class="hover:text-brand-500 transition-colors">Habilidades</a>
-                    <a href="#projetos" class="hover:text-brand-500 transition-colors">Projetos</a>
-                    <a href="#experiencia" class="hover:text-brand-500 transition-colors">Experiência</a>
-                    <a href="#contato" class="hover:text-brand-500 transition-colors">Contato</a>
-                </div>
-                <a href="https://wa.me/5521982814880" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs transition-all shadow-lg shadow-brand-600/20">
-                    <i class="fa-brands me-1 fa-whatsapp"></i> Conversar
-                </a>
-            </div>
+  <!-- Barra de Progresso Superior (Motion Design Feedback) -->
+  <div id="loading-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 to-cyan-400 z-50 w-0 motion-smooth"></div>
+
+  <!-- Navegação -->
+  <nav class="fixed top-0 w-full z-40 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="text-xl font-bold bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent motion-smooth hover:scale-105">
+          &lt;Isac.Dev /&gt;
+        </a>
+        <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
+          <a href="#sobre" class="hover:text-brand-400 motion-smooth">Sobre</a>
+          <a href="#habilidades" class="hover:text-brand-400 motion-smooth">Habilidades</a>
+          <a href="#projetos" class="hover:text-brand-400 motion-smooth">Projetos</a>
+          <a href="#experiencia" class="hover:text-brand-400 motion-smooth">Experiência</a>
         </div>
-    </nav>
+        <a href="https://wa.me/5521982814880" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs motion-smooth shadow-lg shadow-brand-600/20 hover:scale-105">
+          <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        <div class="space-y-6 md:w-2/3">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
-                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                Análise e Desenvolvimento de Sistemas (UVA)
-            </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                Isac Gonçalves <br>
-                <span class="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">
-                    Tecnologia & Automação
-                </span>
-            </h1>
-            <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-                Desenvolvedor focado em Python, automação de rotinas, suporte de infraestrutura (CPD) e criação de ecossistemas web. Apaixonado por transformar processos operacionais em soluções eficientes.
-            </p>
-            <div class="flex flex-wrap gap-4 pt-2">
-                <a href="#projetos" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm transition-all shadow-lg shadow-brand-600/30 flex items-center gap-2">
-                    <i class="fa-solid fa-code"></i> Ver Projetos
-                </a>
-                <a href="https://www.linkedin.com/in/isac-gonçalves-651327238" target="_blank" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm transition-all flex items-center gap-2">
-                    <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
-                </a>
-            </div>
+  <!-- Content Container (Com Skeleton State inicial) -->
+  <main class="pt-28 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- SKELETON LOADER (Exibido enquanto simula busca de dados/componentes) -->
+    <div id="skeleton-container" class="space-y-12 animate-pulse-slow">
+      <div class="flex flex-col md:flex-row justify-between gap-8 items-center">
+        <div class="w-full md:w-2/3 space-y-4">
+          <div class="h-6 w-48 bg-slate-800 rounded-full"></div>
+          <div class="h-12 w-3/4 bg-slate-800 rounded-xl"></div>
+          <div class="h-20 w-full bg-slate-800 rounded-xl"></div>
+          <div class="h-10 w-40 bg-slate-800 rounded-xl"></div>
+        </div>
+        <div class="w-64 h-64 bg-slate-800 rounded-3xl"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+        <div class="h-48 bg-slate-800 rounded-2xl"></div>
+        <div class="h-48 bg-slate-800 rounded-2xl"></div>
+        <div class="h-48 bg-slate-800 rounded-2xl"></div>
+      </div>
+    </div>
+
+    <!-- CONTEÚDO REAL (Carregado com Smooth Animation de Entrada) -->
+    <div id="real-content" class="hidden opacity-0 animate-fade-in">
+      
+      <!-- Hero Section -->
+      <section id="sobre" class="flex flex-col md:flex-row items-center justify-between gap-12 pb-16">
+        <div class="space-y-6 md:w-2/3 animate-slide-up">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
+            Análise e Desenvolvimento de Sistemas (UVA)[span_0](start_span)[span_0](end_span)
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            Isac Gonçalves da Silva <br>
+            <span class="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">
+              Python & Automações de TI
+            </span>
+          </h1>
+          <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+            Profissional focado em Suporte Técnico, Infraestrutura (CPD), automação de processos em Python e desenvolvimento de softwares interativos[span_1](start_span)[span_1](end_span).
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#projetos" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm motion-smooth shadow-lg shadow-brand-600/30 hover:-translate-y-1">
+              <i class="fa-solid fa-code me-1"></i> Ver Projetos
+            </a>
+            <a href="https://www.linkedin.com/in/isac-gon%C3%A7alves-651327238" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm motion-smooth hover:-translate-y-1">
+              <i class="fa-brands fa-linkedin text-blue-400 me-1"></i> LinkedIn
+            </a>
+          </div>
         </div>
 
-        <div class="w-full md:w-1/3 flex justify-center">
-            <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl bg-gradient-to-tr from-brand-500 to-cyan-500 p-1 shadow-2xl shadow-brand-500/10">
-                <div class="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center p-6 text-center border border-slate-800">
-                    <div class="w-20 h-20 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-3xl mb-4 border border-brand-500/20">
-                        <i class="fa-solid fa-terminal"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Isac G. Silva</h3>
-                    <p class="text-xs text-slate-400 mt-1">Nova Iguaçu — RJ</p>
-                    <div class="mt-4 flex gap-2">
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Python</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">CPD</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Web</span>
-                    </div>
-                </div>
+        <div class="w-full md:w-1/3 flex justify-center animate-slide-up">
+          <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl bg-gradient-to-tr from-brand-500 to-cyan-500 p-1 shadow-2xl shadow-brand-500/10 motion-smooth hover:scale-105">
+            <div class="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center p-6 text-center border border-slate-800">
+              <div class="w-20 h-20 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-3xl mb-4 border border-brand-500/20">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white">Isac G. Silva</h3>
+              <p class="text-xs text-slate-400 mt-1">Nova Iguaçu — RJ[span_2](start_span)[span_2](end_span)</p>
+              <div class="mt-4 flex gap-2">
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Python[span_3](start_span)[span_3](end_span)</span>
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">CPD[span_4](start_span)[span_4](end_span)</span>
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Web</span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Habilidades -->
-    <section id="habilidades" class="py-16 bg-slate-900/50 border-y border-slate-800/80">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Habilidades Técnicas</h2>
-            <p class="text-slate-400 text-sm mb-10">Competências em desenvolvimento, automação e infraestrutura de TI.</p>
+      <!-- Habilidades -->
+      <section id="habilidades" class="py-16 border-t border-slate-800/80">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Habilidades Técnicas</h2>
+        <p class="text-slate-400 text-sm mb-10">Qualificações e tecnologias dominadas.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Automação & Dev -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-gears"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Programação & Automação</h3>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li>• Python Avançado</li>
-                        <li>• Scripts em CMD e Automações em Batch</li>
-                        <li>• Criação de Macros para processos diários</li>
-                        <li>• Integrações para disparo de mensagens e WhatsApp</li>
-                    </ul>
-                </div>
-
-                <!-- Infraestrutura & CPD -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Suporte & Infraestrutura (CPD)</h3>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li>• Montagem e manutenção preventiva de Hardware</li>
-                        <li>• Diagnóstico de processadores, placas e componentes</li>
-                        <li>• Suporte operacional a redes e sistemas locais</li>
-                        <li>• Manutenção de rotinas de escritório e sistemas corporativos</li>
-                    </ul>
-                </div>
-
-                <!-- Gestão de Dados -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/40 transition-all">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg mb-4">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Gestão de Dados & Estoque</h3>
-                    <ul class="text-xs text-slate-400 space-y-2">
-                        <li>• Excel Avançado e Planilhas Gerenciais</li>
-                        <li>• Controle, conferência e auditoria de estoque</li>
-                        <li>• Gestão de informações administrativas</li>
-                        <li>• Pacote Office Corporativo</li>
-                    </ul>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 motion-smooth hover:border-brand-500/50 hover:-translate-y-1">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-code"></i>
             </div>
-        </div>
-    </section>
+            <h3 class="text-lg font-bold text-white mb-2">Programação & Automação</h3>
+            <ul class="text-xs text-slate-400 space-y-2">
+              <li>• Python Avançado[span_5](start_span)[span_5](end_span)</li>
+              <li>• Scripts em CMD e Macros para Automação[span_6](start_span)[span_6](end_span)</li>
+              <li>• Lógica e Desenvolvimento Mobile[span_7](start_span)[span_7](end_span)</li>
+              <li>• Automação de notificações/mensagens (WhatsApp)[span_8](start_span)[span_8](end_span)</li>
+            </ul>
+          </div>
 
-    <!-- Projetos -->
-    <section id="projetos" class="py-20 max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Projetos em Destaque</h2>
-        <p class="text-slate-400 text-sm mb-12">Soluções web interativas e ecossistemas desenvolvidos.</p>
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 motion-smooth hover:border-brand-500/50 hover:-translate-y-1">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Suporte & CPD</h3>
+            <ul class="text-xs text-slate-400 space-y-2">
+              <li>• Montagem e Manutenção de Hardware[span_9](start_span)[span_9](end_span)</li>
+              <li>• Análise de Componentes e Processadores[span_10](start_span)[span_10](end_span)</li>
+              <li>• Suporte operacional a redes e sistemas[span_11](start_span)[span_11](end_span)</li>
+              <li>• Gestão de centro de dados e redes[span_12](start_span)[span_12](end_span)</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 motion-smooth hover:border-brand-500/50 hover:-translate-y-1">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-table"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Gestão & Estoque</h3>
+            <ul class="text-xs text-slate-400 space-y-2">
+              <li>• Excel Avançado & Planilhas Gerenciais[span_13](start_span)[span_13](end_span)</li>
+              <li>• Conferência e Controle de Estoque[span_14](start_span)[span_14](end_span)</li>
+              <li>• Pacote Office Avançado[span_15](start_span)[span_15](end_span)</li>
+              <li>• Rotinas Administrativas e Financeiras[span_16](start_span)[span_16](end_span)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projetos com Lazy Loading nas chamadas -->
+      <section id="projetos" class="py-16 border-t border-slate-800/80">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Projetos Publicados</h2>
+        <p class="text-slate-400 text-sm mb-10">Aplicações com interfaces e automações ativas.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Projeto 1: ZACurrículo -->
-            <div class="group rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col">
-                <div class="p-6 flex-1">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Web App</span>
-                        <i class="fa-solid fa-file-invoice text-slate-600 text-xl group-hover:text-emerald-400 transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">ZACurrículo</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                        Gerador e simulador dinâmico de currículos profissionais em tempo real. Conta com personalização de layout (Clássico/Moderno), recursos de IA para objetivos e exportação direta.
-                    </p>
-                </div>
-                <div class="p-6 pt-0">
-                    <a href="https://zacode-tech.github.io/ZACurriculo/" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs transition-all border border-slate-700 hover:border-brand-500">
-                        Acessar Aplicação <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Projeto 2: Zacpoint -->
-            <div class="group rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col">
-                <div class="p-6 flex-1">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Sistemas</span>
-                        <i class="fa-solid fa-clock text-slate-600 text-xl group-hover:text-cyan-400 transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Zacpoint</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                        Sistema web direcionado à gestão e registro de ponto eletrônico, facilitando o acompanhamento de horários e rotinas operacionais para equipes.
-                    </p>
-                </div>
-                <div class="p-6 pt-0">
-                    <a href="https://zacode-tech.github.io/zacpoint/" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs transition-all border border-slate-700 hover:border-brand-500">
-                        Acessar Aplicação <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Projeto 3: Zaccode -->
-            <div class="group rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col">
-                <div class="p-6 flex-1">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Hub de TI</span>
-                        <i class="fa-solid fa-cubes text-slate-600 text-xl group-hover:text-purple-400 transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Zacode Tech</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                        Portal centralizador da marca Zacode, reunindo projetos de software, ferramentas de apoio operacional e soluções de automação tecnológica.
-                    </p>
-                </div>
-                <div class="p-6 pt-0">
-                    <a href="https://zacode-tech.github.io/Zaccode/" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs transition-all border border-slate-700 hover:border-brand-500">
-                        Acessar Portal <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experiência & Formação -->
-    <section id="experiencia" class="py-16 bg-slate-900/50 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- Trajetória Profissional -->
+          <!-- ZACurrículo -->
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between motion-smooth hover:border-brand-500/50 hover:-translate-y-2">
             <div>
-                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-briefcase text-brand-500 text-lg"></i> Experiência Profissional
-                </h2>
-                <div class="space-y-6">
-                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                        <div class="flex justify-between items-start mb-1">
-                            <h3 class="font-bold text-white text-sm">Auxiliar de Escritório / CPD</h3>
-                            <span class="text-[10px] text-brand-400 font-semibold bg-brand-500/10 px-2 py-0.5 rounded">Tids Papelaria</span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed mt-2">
-                            Atuação direta no setor administrativo e no Centro de Processamento de Dados (CPD). Responsável pelo suporte técnico de TI (redes e sistemas), gestão de documentos e controle de estoque.
-                        </p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                        <div class="flex justify-between items-start mb-1">
-                            <h3 class="font-bold text-white text-sm">Operador de Loja / Apoio CPD</h3>
-                            <span class="text-[10px] text-slate-400 font-medium">12/2021 — 08/2024</span>
-                        </div>
-                        <p class="text-xs font-semibold text-brand-400 mb-2">Vianense Supermercado</p>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Apoio diário ao setor administrativo e ao CPD, organização documental, inclusão de dados em sistema, além de atuação em conferência de estoque e auditoria de loja.
-                        </p>
-                    </div>
-                </div>
+              <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Web App</span>
+              <h3 class="text-xl font-bold text-white mt-3 mb-2">ZACurrículo</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                Gerador de currículos com suporte a inteligência artificial, personalização em tempo real e exportação rápida.
+              </p>
             </div>
+            <a href="https://zacode-tech.github.io/ZACurriculo/" target="_blank" rel="noopener" loading="lazy" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs motion-smooth border border-slate-700">
+              Acessar Projeto <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
 
-            <!-- Formação & Certificados -->
+          <!-- Zacpoint -->
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between motion-smooth hover:border-brand-500/50 hover:-translate-y-2">
             <div>
-                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-graduation-cap text-cyan-400 text-lg"></i> Formação & Cursos
-                </h2>
-                <div class="space-y-4">
-                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                        <h3 class="font-bold text-white text-sm">Graduação em Análise e Desenvolvimento de Sistemas</h3>
-                        <p class="text-xs text-cyan-400 font-medium">Universidade Veiga de Almeida (UVA)</p>
-                        <p class="text-[11px] text-slate-500 mt-1">Cursando (1º Período)</p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                        <h3 class="font-bold text-white text-sm mb-2">Cursos de Aperfeiçoamento (Udemy)</h3>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-400">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-500 text-[10px]"></i> Python Avançado</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-500 text-[10px]"></i> Excel Avançado</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-500 text-[10px]"></i> Pacote Office Avançado</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-500 text-[10px]"></i> Gestão de Estoque</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-500 text-[10px]"></i> Aux. Administrativo</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-brand-500 text-[10px]"></i> Assistente de RH</span>
-                        </div>
-                    </div>
-                </div>
+              <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Sistema RH</span>
+              <h3 class="text-xl font-bold text-white mt-3 mb-2">Zacpoint</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                Plataforma de gestão de ponto eletrônico inteligente com biometria facial simulada, relatórios e emissão de holerite.
+              </p>
             </div>
+            <a href="https://zacode-tech.github.io/zacpoint/" target="_blank" rel="noopener" loading="lazy" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs motion-smooth border border-slate-700">
+              Acessar Projeto <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+
+          <!-- Zacode Tech -->
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between motion-smooth hover:border-brand-500/50 hover:-translate-y-2">
+            <div>
+              <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Sistemas</span>
+              <h3 class="text-xl font-bold text-white mt-3 mb-2">Zacode Tech</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                Sistema corporativo de auditoria de estoque, scanner de gôndola e prevenção de ruptura com IA integrada.
+              </p>
+            </div>
+            <a href="https://zacode-tech.github.io/Zaccode/" target="_blank" rel="noopener" loading="lazy" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs motion-smooth border border-slate-700">
+              Acessar Projeto <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Contato / Rodapé -->
-    <footer id="contato" class="py-16 max-w-6xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-extrabold text-white mb-3">Vamos Conectar?</h2>
-        <p class="text-slate-400 text-sm max-w-md mx-auto mb-8">
-            Estou disponível para oportunidades nas áreas de TI, Suporte Técnico, CPD e Desenvolvimento de Software.
-        </p>
+      <!-- Experiência Profissional -->
+      <section id="experiencia" class="py-16 border-t border-slate-800/80">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8">Trajetória Profissional</h2>
+        <div class="space-y-6">
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-white text-base">Auxiliar de Escritório (CPD e Suporte de TI)[span_17](start_span)[span_17](end_span)</h3>
+              <span class="text-xs text-brand-400 font-semibold bg-brand-500/10 px-2.5 py-1 rounded-full">Tids Papelaria[span_18](start_span)[span_18](end_span)</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Atuação no CPD com organização de documentos, controle/conferência de estoque e suporte técnico de TI para manter em funcionamento computadores, redes e sistemas da empresa[span_19](start_span)[span_19](end_span).
+            </p>
+          </div>
 
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
-            <a href="https://wa.me/5521982814880" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center gap-2">
-                <i class="fa-brands fa-whatsapp text-lg"></i> (21) 98281-4880
-            </a>
-            <a href="mailto:isacgoncalves2022@gmail.com" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition-all border border-slate-700 flex items-center gap-2">
-                <i class="fa-regular fa-envelope text-lg text-brand-400"></i> isacgoncalves2022@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/isac-gonçalves-651327238" target="_blank" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition-all border border-slate-700 flex items-center gap-2">
-                <i class="fa-brands fa-linkedin text-lg text-blue-400"></i> Perfil no LinkedIn
-            </a>
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-white text-base">Operador de Loja / Apoio CPD[span_20](start_span)[span_20](end_span)</h3>
+              <span class="text-xs text-slate-400">12/2021 — 08/2024[span_21](start_span)[span_21](end_span)</span>
+            </div>
+            <p class="text-xs text-brand-400 font-medium mb-1">Vianense Supermercado[span_22](start_span)[span_22](end_span)</p>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Apoio direto ao setor administrativo e ao CPD[span_23](start_span)[span_23](end_span). Inserção de dados em sistema, organização documental, além de controle e auditoria prática de estoque[span_24](start_span)[span_24](end_span).
+            </p>
+          </div>
         </div>
+      </section>
 
-        <p class="text-slate-600 text-xs">&copy; 2026 Isac Gonçalves da Silva. Todos os direitos reservados.</p>
-    </footer>
+      <!-- Rodapé -->
+      <footer class="pt-12 border-t border-slate-800 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Isac Gonçalves da Silva. Todos os direitos reservados.[span_25](start_span)[span_25](end_span)</p>
+      </footer>
 
+    </div>
+  </main>
+
+  <!-- Script de Simulação de Carregamento & Motion Transition -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bar = document.getElementById('loading-bar');
+      const skeleton = document.getElementById('skeleton-container');
+      const content = document.getElementById('real-content');
+
+      // Animação da barra de progresso
+      bar.style.width = '70%';
+
+      setTimeout(() => {
+        bar.style.width = '100%';
+        
+        // Transição suave de saída do Skeleton e entrada do Conteúdo
+        setTimeout(() => {
+          bar.style.opacity = '0';
+          skeleton.classList.add('animate-fade-out');
+          
+          setTimeout(() => {
+            skeleton.classList.add('hidden');
+            content.classList.remove('hidden');
+            content.classList.remove('opacity-0');
+            content.classList.add('animate-fade-in');
+          }, 300);
+
+        }, 200);
+      }, 500);
+    });
+  </script>
 </body>
 </html>
