@@ -1,325 +1,769 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Isac Gonçalves | Software Developer & Automação</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Sentry Observability SDK Integration -->
-  <script src="https://browser.sentry-cdn.com/7.80.0/bundle.min.js" crossorigin="anonymous"></script>
-  <script>
-    if (window.Sentry) {
-      Sentry.init({
-        dsn: "https://examplePublicKey@o0.ingest.sentry.io/0",
-        tracesSampleRate: 1.0,
-        replaysSessionSampleRate: 0.1,
-        replaysOnErrorSampleRate: 1.0,
-      });
-    }
-  </script>
-
-  <!-- Configuração do Tailwind & Custom Motion Animations -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-              900: '#064e3b',
-            }
-          },
-          animation: {
-            'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-            'fade-out': 'fadeOut 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-            'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-            'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0', transform: 'scale(0.98)' },
-              '100%': { opacity: '1', transform: 'scale(1)' },
-            },
-            fadeOut: {
-              '0%': { opacity: '1' },
-              '100%': { opacity: '0' },
-            },
-            slideUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isac Gonçalves da Silva | Software Engineer Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #121824;
+            --bg-card: rgba(18, 24, 36, 0.75);
+            --accent-cyan: #00f2fe;
+            --accent-purple: #7f00ff;
+            --accent-blue: #4facfe;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-code: 'Fira Code', monospace;
+            --font-main: 'Inter', sans-serif;
         }
-      }
-    }
-  </script>
 
-  <style>
-    .motion-smooth {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Canvas Interactive Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: rgba(10, 13, 20, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-code);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent-purple); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .lang-btn {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(127, 0, 255, 0.1));
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 8%;
+            position: relative;
+        }
+
+        .hero-tag {
+            font-family: var(--font-code);
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            min-height: 2.5rem;
+            font-family: var(--font-code);
+        }
+
+        .hero-description {
+            max-width: 680px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(0, 242, 254, 0.05);
+        }
+
+        /* General Sections */
+        section { padding: 6rem 8%; }
+
+        .section-header { margin-bottom: 3.5rem; }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, rgba(0, 242, 254, 0.4), transparent);
+            margin-left: 1rem;
+        }
+
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .glass-card:hover::before { opacity: 1; }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-badge {
+            align-self: flex-start;
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .project-dev-vision {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--accent-purple);
+            padding: 0.8rem 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .project-dev-vision strong {
+            color: var(--accent-cyan);
+            display: block;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .tech-tag {
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .skill-category-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 1.2rem;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .skills-list li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            padding: 4rem 8% 2rem;
+            background: rgba(10, 13, 20, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: var(--font-code);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .nav-links { display: none; }
+            section { padding: 4rem 5%; }
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body>
 
-  <!-- Barra de Progresso Superior (Motion Design Feedback) -->
-  <div id="loading-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 to-cyan-400 z-50 w-0 motion-smooth"></div>
+    <!-- Particle Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
 
-  <!-- Navegação -->
-  <nav class="fixed top-0 w-full z-40 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="text-xl font-bold bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent motion-smooth hover:scale-105">
-          &lt;Isac.Dev /&gt;
-        </a>
-        <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
-          <a href="#sobre" class="hover:text-brand-400 motion-smooth">Sobre</a>
-          <a href="#habilidades" class="hover:text-brand-400 motion-smooth">Habilidades</a>
-          <a href="#projetos" class="hover:text-brand-400 motion-smooth">Projetos</a>
-          <a href="#experiencia" class="hover:text-brand-400 motion-smooth">Experiência</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">&lt;Isac.<span>ZacCode</span>/&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
+            <li><a href="#skills" data-pt="Conhecimento" data-en="Skills">Conhecimento</a></li>
+            <li><a href="#projects" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+            <li><a href="#contact" data-pt="Contato" data-en="Contact">Contato</a></li>
+        </ul>
+        <button class="lang-btn" id="lang-toggle">
+            🌐 <span id="lang-text">EN</span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-tag">
+            &gt;_ <span data-pt="Olá, meu nome é" data-en="Hello, my name is">Olá, meu nome é</span>
         </div>
-        <a href="https://wa.me/5521982814880" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs motion-smooth shadow-lg shadow-brand-600/20 hover:scale-105">
-          <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Container Principal -->
-  <main class="pt-28 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <!-- SKELETON LOADER -->
-    <div id="skeleton-container" class="space-y-12 animate-pulse-slow">
-      <div class="flex flex-col md:flex-row justify-between gap-8 items-center">
-        <div class="w-full md:w-2/3 space-y-4">
-          <div class="h-6 w-48 bg-slate-800 rounded-full"></div>
-          <div class="h-12 w-3/4 bg-slate-800 rounded-xl"></div>
-          <div class="h-20 w-full bg-slate-800 rounded-xl"></div>
-          <div class="h-10 w-40 bg-slate-800 rounded-xl"></div>
+        <h1 class="hero-title">Isac Gonçalves da Silva</h1>
+        <div class="hero-subtitle" id="typewriter"></div>
+        <p class="hero-description" data-pt="Desenvolvedor de Software focado no projeto e implementação de aplicações mobile nativas, inteligência artificial aplicada, visão computacional e arquiteturas robustas de automação e back-end." data-en="Software Engineer specializing in native mobile applications, applied AI, computer vision, and robust backend automation architectures.">
+            Desenvolvedor de Software focado no projeto e implementação de aplicações mobile nativas, inteligência artificial aplicada, visão computacional e arquiteturas robustas de automação e back-end.
+        </p>
+        <div class="cta-group">
+            <a href="#projects" class="btn-primary" data-pt="Ver Projetos" data-en="View Projects">Ver Projetos</a>
+            <a href="#contact" class="btn-secondary" data-pt="Contato / GitHub" data-en="Contact / GitHub">Contato / GitHub</a>
         </div>
-        <div class="w-64 h-64 bg-slate-800 rounded-3xl"></div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
-        <div class="h-48 bg-slate-800 rounded-2xl"></div>
-        <div class="h-48 bg-slate-800 rounded-2xl"></div>
-        <div class="h-48 bg-slate-800 rounded-2xl"></div>
-      </div>
-    </div>
+    </section>
 
-    <!-- CONTEÚDO REAL -->
-    <div id="real-content" class="hidden opacity-0 animate-fade-in">
-      
-      <!-- Hero Section -->
-      <section id="sobre" class="flex flex-col md:flex-row items-center justify-between gap-12 pb-16">
-        <div class="space-y-6 md:w-2/3 animate-slide-up">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
-            Análise e Desenvolvimento de Sistemas (UVA)
-          </div>
-          <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            Isac Gonçalves da Silva <br>
-            <span class="bg-gradient-to-r from-brand-400 to-cyan-400 bg-clip-text text-transparent">
-              Python & Automações de TI
-            </span>
-          </h1>
-          <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-            Profissional focado em Suporte Técnico, Infraestrutura (CPD), automação de processos em Python e desenvolvimento de softwares interativos.
-          </p>
-          <div class="flex flex-wrap gap-4 pt-2">
-            <a href="#projetos" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm motion-smooth shadow-lg shadow-brand-600/30 hover:-translate-y-1">
-              <i class="fa-solid fa-code me-1"></i> Ver Projetos
-            </a>
-            <a href="https://www.linkedin.com/in/isac-gon%C3%A7alves-651327238" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm motion-smooth hover:-translate-y-1">
-              <i class="fa-brands fa-linkedin text-blue-400 me-1"></i> LinkedIn
-            </a>
-          </div>
+    <!-- About Section -->
+    <section id="about" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
         </div>
-
-        <div class="w-full md:w-1/3 flex justify-center animate-slide-up">
-          <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl bg-gradient-to-tr from-brand-500 to-cyan-500 p-1 shadow-2xl shadow-brand-500/10 motion-smooth hover:scale-105">
-            <div class="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center p-6 text-center border border-slate-800">
-              <div class="w-20 h-20 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-3xl mb-4 border border-brand-500/20">
-                <i class="fa-solid fa-terminal"></i>
-              </div>
-              <h3 class="text-lg font-bold text-white">Isac G. Silva</h3>
-              <p class="text-xs text-slate-400 mt-1">Nova Iguaçu — RJ</p>
-              <div class="mt-4 flex gap-2">
-                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Python</span>
-                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">CPD</span>
-                <span class="text-[10px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Web</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Habilidades -->
-      <section id="habilidades" class="py-16 border-t border-slate-800/80">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Habilidades Técnicas</h2>
-        <p class="text-slate-400 text-sm mb-10">Qualificações e tecnologias dominadas.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 motion-smooth hover:border-brand-500/50 hover:-translate-y-1">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mb-4">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Programação & Automação</h3>
-            <ul class="text-xs text-slate-400 space-y-2">
-              <li>• Python Avançado</li>
-              <li>• Scripts em CMD e Macros para Automação</li>
-              <li>• Lógica e Desenvolvimento Mobile</li>
-              <li>• Automação de notificações/mensagens (WhatsApp)</li>
-            </ul>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 motion-smooth hover:border-brand-500/50 hover:-translate-y-1">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-4">
-              <i class="fa-solid fa-server"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Suporte & CPD</h3>
-            <ul class="text-xs text-slate-400 space-y-2">
-              <li>• Montagem e Manutenção de Hardware</li>
-              <li>• Análise de Componentes e Processadores</li>
-              <li>• Suporte operacional a redes e sistemas</li>
-              <li>• Gestão de centro de dados e redes</li>
-            </ul>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 motion-smooth hover:border-brand-500/50 hover:-translate-y-1">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg mb-4">
-              <i class="fa-solid fa-table"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Gestão & Estoque</h3>
-            <ul class="text-xs text-slate-400 space-y-2">
-              <li>• Excel Avançado & Planilhas Gerenciais</li>
-              <li>• Conferência e Controle de Estoque</li>
-              <li>• Pacote Office Avançado</li>
-              <li>• Rotinas Administrativas e Financeiras</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projetos -->
-      <section id="projetos" class="py-16 border-t border-slate-800/80">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Projetos Publicados</h2>
-        <p class="text-slate-400 text-sm mb-10">Aplicações com interfaces e automações ativas.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- ZACurrículo -->
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between motion-smooth hover:border-brand-500/50 hover:-translate-y-2">
-            <div>
-              <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Web App</span>
-              <h3 class="text-xl font-bold text-white mt-3 mb-2">ZACurrículo</h3>
-              <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                Gerador de currículos com suporte a inteligência artificial, personalização em tempo real e exportação rápida.
-              </p>
-            </div>
-            <a href="https://zacode-tech.github.io/ZACurriculo/" target="_blank" rel="noopener" loading="lazy" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs motion-smooth border border-slate-700">
-              Acessar Projeto <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-          </div>
-
-          <!-- Zacpoint -->
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between motion-smooth hover:border-brand-500/50 hover:-translate-y-2">
-            <div>
-              <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Sistema RH</span>
-              <h3 class="text-xl font-bold text-white mt-3 mb-2">Zacpoint</h3>
-              <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                Plataforma de gestão de ponto eletrônico inteligente com biometria facial simulada, relatórios e emissão de holerite.
-              </p>
-            </div>
-            <a href="https://zacode-tech.github.io/zacpoint/" target="_blank" rel="noopener" loading="lazy" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs motion-smooth border border-slate-700">
-              Acessar Projeto <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-          </div>
-
-          <!-- Zacode Tech -->
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between motion-smooth hover:border-brand-500/50 hover:-translate-y-2">
-            <div>
-              <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Sistemas</span>
-              <h3 class="text-xl font-bold text-white mt-3 mb-2">Zacode Tech</h3>
-              <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                Sistema corporativo de auditoria de estoque, scanner de gôndola e prevenção de ruptura com IA integrada.
-              </p>
-            </div>
-            <a href="https://zacode-tech.github.io/Zaccode/" target="_blank" rel="noopener" loading="lazy" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-brand-600 text-white font-semibold text-xs motion-smooth border border-slate-700">
-              Acessar Projeto <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experiência Profissional -->
-      <section id="experiencia" class="py-16 border-t border-slate-800/80">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8">Trajetória Profissional</h2>
-        <div class="space-y-6">
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-            <div class="flex justify-between items-start mb-2">
-              <h3 class="font-bold text-white text-base">Auxiliar de Escritório (CPD e Suporte de TI)</h3>
-              <span class="text-xs text-brand-400 font-semibold bg-brand-500/10 px-2.5 py-1 rounded-full">Tids Papelaria</span>
-            </div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Atuação no CPD com organização de documentos, controle/conferência de estoque e suporte técnico de TI para manter em funcionamento computadores, redes e sistemas da empresa.
+        <div class="glass-card">
+            <p style="font-size: 1.1rem; color: #d1d5db; margin-bottom: 1rem;" data-pt="Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), dedico minha atuação técnica ao projeto de ecossistemas autônomos sob a marca ZacCode." data-en="Pursuing a degree in Systems Analysis and Software Development at Universidade Veiga de Almeida (UVA), I dedicate my engineering focus to designing autonomous technological ecosystems under the ZacCode initiative.">
+                Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), dedico minha atuação técnica ao projeto de ecossistemas autônomos sob a marca ZacCode.
             </p>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-            <div class="flex justify-between items-start mb-2">
-              <h3 class="font-bold text-white text-base">Operador de Loja / Apoio CPD</h3>
-              <span class="text-xs text-slate-400">12/2021 — 08/2024</span>
-            </div>
-            <p class="text-xs text-brand-400 font-medium mb-1">Vianense Supermercado</p>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Apoio direto ao setor administrativo e ao CPD. Inserção de dados em sistema, organização documental, além de controle e auditoria prática de estoque.
+            <p style="color: var(--text-muted);" data-pt="Minha engenharia une rigor de software e inovação prática: desde aplicações Android nativas com validação biométrica facial e geolocalização até sintetizadores virtuais em tempo real baseados em rastreamento gestual e raspagem automatizada de dados." data-en="My software engineering combines architectural rigor with practical innovation: from native Android applications with facial biometric authentication and geolocation to real-time gesture-driven synthesizers and automated data extraction microservices.">
+                Minha engenharia une rigor de software e inovação prática: desde aplicações Android nativas com validação biométrica facial e geolocalização até sintetizadores virtuais em tempo real baseados em rastreamento gestual e raspagem automatizada de dados.
             </p>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Rodapé -->
-      <footer class="pt-12 border-t border-slate-800 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Isac Gonçalves da Silva. Todos os direitos reservados.</p>
-      </footer>
+    <!-- Skills Section -->
+    <section id="skills" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title" data-pt="Conhecimento Profissional" data-en="Technical Knowledge">Conhecimento Profissional</h2>
+        </div>
+        <div class="grid-3">
+            <div class="glass-card">
+                <div class="skill-category-title" data-pt="Mobile & Front-End" data-en="Mobile & Front-End">Mobile & Front-End</div>
+                <ul class="skills-list">
+                    <li>• Kotlin / Android Studio (Nativo)</li>
+                    <li>• JavaScript (ES6+) / HTML5 / CSS3</li>
+                    <li>• Arquitetura UI/UX Mobile & Layouts Responsivos</li>
+                    <li>• Comunicação Wi-Fi Local & Pareamento QR Code</li>
+                </ul>
+            </div>
 
-    </div>
-  </main>
+            <div class="glass-card">
+                <div class="skill-category-title" data-pt="Back-End & Automação" data-en="Back-End & Automation">Back-End & Automação</div>
+                <ul class="skills-list">
+                    <li>• Python (Mineração de Dados & Web Scraping)</li>
+                    <li>• Firebase Realtime Database / Autenticação</li>
+                    <li>• APIs RESTful & Arquitetura de Microsserviços</li>
+                    <li>• Automação Operacional & Integração com APIs Terceiras</li>
+                </ul>
+            </div>
 
-  <!-- Script de Simulação de Carregamento & Motion Transition -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const bar = document.getElementById('loading-bar');
-      const skeleton = document.getElementById('skeleton-container');
-      const content = document.getElementById('real-content');
+            <div class="glass-card">
+                <div class="skill-category-title" data-pt="IA & Visão Computacional" data-en="AI & Computer Vision">IA & Visão Computacional</div>
+                <ul class="skills-list">
+                    <li>• Reconhecimento e Biometria Facial</li>
+                    <li>• Rastreamento Gestual (Gesture Control em Tempo Real)</li>
+                    <li>• Separação de Stems & Processamento de Áudio</li>
+                    <li>• Integração com Gemini API & Ferramentas Generativas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-      bar.style.width = '70%';
+    <!-- Projects Portfolio Section -->
+    <section id="projects" class="reveal">
+        <div class="section-header">
+            <h2 class="section-title" data-pt="Aplicativos & Projetos" data-en="Applications & Projects">Aplicativos & Projetos</h2>
+        </div>
+        <div class="grid-2">
 
-      setTimeout(() => {
-        bar.style.width = '100%';
-        
-        setTimeout(() => {
-          bar.style.opacity = '0';
-          skeleton.classList.add('animate-fade-out');
-          
-          setTimeout(() => {
-            skeleton.classList.add('hidden');
-            content.classList.remove('hidden');
-            content.classList.remove('opacity-0');
-            content.classList.add('animate-fade-in');
-          }, 300);
+            <!-- ZacPoint -->
+            <div class="glass-card project-card">
+                <div>
+                    <span class="project-badge">Corporate / Attendance</span>
+                    <h3 class="project-title">ZacPoint & ZacPoint Colaborador</h3>
+                    <p style="color: var(--text-muted);" data-pt="Ecossistema corporativo inteligente para controle de ponto e gestão de assiduidade." data-en="Intelligent enterprise ecosystem for employee attendance and workforce management.">
+                        Ecossistema corporativo inteligente para controle de ponto e gestão de assiduidade.
+                    </p>
+                    <div class="project-dev-vision">
+                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
+                        <span data-pt="Desenvolvimento de motor biométrico facial para autenticação em tempo real, prevenção de fraudes, cálculo automático de banco de horas, registro sincronizado de pausas/entradas e painel administrativo em nuvem." data-en="Engineered facial biometric validation for real-time authentication, fraud prevention, automated hour bank calculation, synchronized pause/time entry logging, and cloud administrative portal.">
+                            Desenvolvimento de motor biométrico facial para autenticação em tempo real, prevenção de fraudes, cálculo automático de banco de horas, registro sincronizado de pausas/entradas e painel administrativo em nuvem.
+                        </span>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Android Studio</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Biometria Facial</span>
+                </div>
+            </div>
 
-        }, 200);
-      }, 500);
-    });
-  </script>
+            <!-- MAPA TIDS -->
+            <div class="glass-card project-card">
+                <div>
+                    <span class="project-badge">Mobility / Geolocation</span>
+                    <h3 class="project-title">MAPA TIDS</h3>
+                    <p style="color: var(--text-muted);" data-pt="Plataforma de navegação urbana e mapeamento de transporte regional." data-en="Urban navigation and regional transit mapping platform.">
+                        Plataforma de navegação urbana e mapeamento de transporte regional.
+                    </p>
+                    <div class="project-dev-vision">
+                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
+                        <span data-pt="Integração avançada com a API do Google Maps, roteamento em tempo real, solicitação de corridas por categorias (carro e moto) e compartilhamento dinâmico de localização." data-en="Advanced Google Maps API integration, real-time route optimization, multi-modal ride dispatching (car and motorcycle), and dynamic live location sharing.">
+                            Integração avançada com a API do Google Maps, roteamento em tempo real, solicitação de corridas por categorias (carro e moto) e compartilhamento dinâmico de localização.
+                        </span>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Google Maps API</span>
+                    <span class="tech-tag">Geolocalização</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Android</span>
+                </div>
+            </div>
+
+            <!-- Gesture Synth -->
+            <div class="glass-card project-card">
+                <div>
+                    <span class="project-badge">Computer Vision / Audio</span>
+                    <h3 class="project-title">Gesture Synth / ZacSynth</h3>
+                    <p style="color: var(--text-muted);" data-pt="Sintetizador virtual com controle generativo por visão computacional." data-en="Virtual synthesizer powered by computer vision gesture control.">
+                        Sintetizador virtual com controle generativo por visão computacional.
+                    </p>
+                    <div class="project-dev-vision">
+                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
+                        <span data-pt="Processamento de vídeo para rastreamento de pontos gestuais das mãos e corpo, traduzindo movimentos em parâmetros de síntese de áudio em tempo real com integração a separadores de faixas musicais." data-en="Video stream processing for tracking hand and body gesture coordinates, mapping motion directly into real-time audio synthesis parameters alongside musical stem isolation.">
+                            Processamento de vídeo para rastreamento de pontos gestuais das mãos e corpo, traduzindo movimentos em parâmetros de síntese de áudio em tempo real com integração a separadores de faixas musicais.
+                        </span>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Visão Computacional</span>
+                    <span class="tech-tag">Web Audio API</span>
+                    <span class="tech-tag">Vercel</span>
+                </div>
+            </div>
+
+            <!-- ZacMusic -->
+            <div class="glass-card project-card">
+                <div>
+                    <span class="project-badge">Networking / Sync</span>
+                    <h3 class="project-title">ZacMusic Arena</h3>
+                    <p style="color: var(--text-muted);" data-pt="Plataforma de sincronização musical e visual interativa para eventos." data-en="Interactive multi-device musical and visual synchronization platform.">
+                        Plataforma de sincronização musical e visual interativa para eventos.
+                    </p>
+                    <div class="project-dev-vision">
+                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
+                        <span data-pt="Criação de protocolo de comunicação via rede Wi-Fi local e conexão instantânea por QR Code, garantindo sincronia de baixa latência em reproduções de áudio e iluminação entre múltiplos dispositivos." data-en="Custom wireless communication protocol over local Wi-Fi networks with instant QR code pairing, delivering low-latency audio and lighting synchronization across multiple connected devices.">
+                            Criação de protocolo de comunicação via rede Wi-Fi local e conexão instantânea por QR Code, garantindo sincronia de baixa latência em reproduções de áudio e iluminação entre múltiplos dispositivos.
+                        </span>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Local Sockets</span>
+                    <span class="tech-tag">QR Code Sync</span>
+                    <span class="tech-tag">Android Native</span>
+                    <span class="tech-tag">Audio Engine</span>
+                </div>
+            </div>
+
+            <!-- Automation & Data Mining -->
+            <div class="glass-card project-card">
+                <div>
+                    <span class="project-badge">Back-End / Data Science</span>
+                    <h3 class="project-title">Módulos de Automação & Mineração</h3>
+                    <p style="color: var(--text-muted);" data-pt="Microsserviços de raspagem web e estruturação de dados corporativos." data-en="Web scraping microservices and administrative data extraction pipelines.">
+                        Microsserviços de raspagem web e estruturação de dados corporativos.
+                    </p>
+                    <div class="project-dev-vision">
+                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
+                        <span data-pt="Engenharia de pipelines em Python para captura automatizada de dados, tratamento de informações não estruturadas e integração de relatórios gerenciais com sistemas terceiros (como Gestão Flash)." data-en="Engineered automated Python pipelines for data extraction, unstructured payload formatting, and operational analytics integration with third-party systems like Gestão Flash.">
+                            Engenharia de pipelines em Python para captura automatizada de dados, tratamento de informações não estruturadas e integração de relatórios gerenciais com sistemas terceiros (como Gestão Flash).
+                        </span>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Web Scraping</span>
+                    <span class="tech-tag">REST APIs</span>
+                    <span class="tech-tag">Gestão Flash API</span>
+                </div>
+            </div>
+
+            <!-- ZacCode Hub & ZACurrículo -->
+            <div class="glass-card project-card">
+                <div>
+                    <span class="project-badge">Web Platforms / AI</span>
+                    <h3 class="project-title">ZacCode Portal & ZACurrículo</h3>
+                    <p style="color: var(--text-muted);" data-pt="Portais web para centralização de serviços e apresentação com IA." data-en="Web platforms for service integration and AI-assisted professional showcase.">
+                        Portais web para centralização de serviços e apresentação com IA.
+                    </p>
+                    <div class="project-dev-vision">
+                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
+                        <span data-pt="Arquitetura de hubs web com consumo direto da API do Gemini para personalização dinâmica de dados profissionais e disponibilização dos serviços da ZacCode." data-en="Web portal architecture integrated directly with the Gemini API for dynamic professional data rendering and continuous showcase of the ZacCode ecosystem.">
+                            Arquitetura de hubs web com consumo direto da API do Gemini para personalização dinâmica de dados profissionais e disponibilização dos serviços da ZacCode.
+                        </span>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Gemini API</span>
+                    <span class="tech-tag">GitHub Codespaces</span>
+                    <span class="tech-tag">Web Design</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <h2 style="margin-bottom: 1rem; color: #fff;" data-pt="Vamos Construir Algo Incrível Juntos?" data-en="Let's Build Something Great Together">Vamos Construir Algo Incrível Juntos?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;" data-pt="Disponível para colaborações em desenvolvimento mobile, inteligência artificial e soluções full-stack." data-en="Available for software engineering collaborations in mobile development, AI, and full-stack solutions.">
+            Disponível para colaborações em desenvolvimento mobile, inteligência artificial e soluções full-stack.
+        </p>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">GH</a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">IN</a>
+            <a href="mailto:isac.goncalves@example.com" class="social-icon" title="Email">@</a>
+        </div>
+        <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.3); font-family: var(--font-code);">
+            &copy; 2026 Isac Gonçalves da Silva • Powered by ZacCode Engine
+        </p>
+    </footer>
+
+    <!-- JavaScript Engine -->
+    <script>
+        // Interactive Canvas Animation
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = Math.min(window.innerWidth / 15, 65);
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2 + 1
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+            ctx.strokeStyle = 'rgba(127, 0, 255, 0.15)';
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // Typewriter Effect
+        const phrases = {
+            pt: ["Desenvolvedor Mobile Nativo", "Especialista em Visão Computacional", "Engenheiro de Automação & Back-End"],
+            en: ["Native Mobile Developer", "Computer Vision Specialist", "Automation & Back-End Engineer"]
+        };
+        let currentLang = 'pt';
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
+
+        function type() {
+            const currentList = phrases[currentLang];
+            const currentPhrase = currentList[phraseIdx];
+
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === currentPhrase.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % currentList.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        type();
+
+        // Language Switcher Logic
+        const langBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            langText.textContent = currentLang === 'pt' ? 'EN' : 'PT';
+
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+        });
+
+        // Intersection Observer for Reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
