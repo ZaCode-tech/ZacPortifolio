@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isac Gonçalves da Silva | Software & Systems Engineer Portfolio</title>
+    <title>Isac Gonçalves da Silva | Software & Systems Architect</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
@@ -11,7 +11,7 @@
         :root {
             --bg-primary: #0a0d14;
             --bg-secondary: #121824;
-            --bg-card: rgba(18, 24, 36, 0.78);
+            --bg-card: rgba(18, 24, 36, 0.82);
             --accent-cyan: #00f2fe;
             --accent-purple: #7f00ff;
             --accent-blue: #4facfe;
@@ -36,7 +36,7 @@
             line-height: 1.6;
         }
 
-        /* Canvas Interactive Background */
+        /* Canvas Background */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -151,7 +151,7 @@
         }
 
         .hero-description {
-            max-width: 720px;
+            max-width: 750px;
             color: var(--text-muted);
             font-size: 1.05rem;
             margin-bottom: 2.5rem;
@@ -196,7 +196,7 @@
             background: rgba(0, 242, 254, 0.05);
         }
 
-        /* General Sections */
+        /* Sections */
         section { padding: 6rem 8%; }
 
         .section-header { margin-bottom: 3.5rem; }
@@ -220,7 +220,7 @@
         /* Grids */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
@@ -230,7 +230,7 @@
             gap: 2rem;
         }
 
-        /* Glassmorphism Cards */
+        /* Project Cards (Interactive Architecture Overview) */
         .glass-card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -240,6 +240,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .glass-card::before {
@@ -253,8 +254,8 @@
 
         .glass-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.15);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.2);
         }
 
         .glass-card:hover::before { opacity: 1; }
@@ -278,9 +279,10 @@
         }
 
         .project-badge.first-app {
-            background: rgba(127, 0, 255, 0.15);
-            color: #b166ff;
-            border-color: rgba(127, 0, 255, 0.4);
+            background: rgba(127, 0, 255, 0.2);
+            color: #c084fc;
+            border-color: rgba(127, 0, 255, 0.5);
+            font-weight: bold;
         }
 
         .project-title {
@@ -290,9 +292,9 @@
             color: #fff;
         }
 
-        .project-dev-vision {
-            background: rgba(0, 0, 0, 0.35);
-            border-left: 3px solid var(--accent-purple);
+        .arch-highlight-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 3px solid var(--accent-cyan);
             padding: 0.85rem 1rem;
             border-radius: 4px;
             margin: 1rem 0;
@@ -300,19 +302,42 @@
             color: #d1d5db;
         }
 
-        .project-dev-vision strong {
+        .arch-highlight-box strong {
             color: var(--accent-cyan);
             display: block;
             margin-bottom: 0.3rem;
             font-family: var(--font-code);
             font-size: 0.78rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hardware-replacement-tag {
+            font-size: 0.82rem;
+            color: #facc15;
+            background: rgba(250, 204, 21, 0.1);
+            border: 1px dashed rgba(250, 204, 21, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            margin-top: 0.6rem;
+            display: inline-block;
+        }
+
+        .click-prompt {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            margin-top: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
         }
 
         .tech-tag {
@@ -322,6 +347,116 @@
             background: rgba(255, 255, 255, 0.05);
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
+        }
+
+        /* Modal / Animated Popup System */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 7, 12, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 20px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 254, 0.2);
+            transform: scale(0.85) translateY(30px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: rgba(255, 0, 80, 0.3);
+            color: #ff0050;
+            transform: rotate(90deg);
+        }
+
+        .modal-header-badge {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section {
+            margin-top: 1.8rem;
+        }
+
+        .modal-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 0.4rem;
+        }
+
+        .modal-text-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .modal-text-list li strong {
+            color: #f3f4f6;
         }
 
         .skill-category-title {
@@ -395,6 +530,7 @@
             nav { padding: 1rem 5%; }
             .nav-links { display: none; }
             section { padding: 4rem 5%; }
+            .modal-container { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -424,26 +560,26 @@
         </div>
         <h1 class="hero-title">Isac Gonçalves da Silva</h1>
         <div class="hero-subtitle" id="typewriter"></div>
-        <p class="hero-description" data-pt="Engenheiro de Software especializado no ecossistema Android Nativo (Kotlin), inteligência artificial embarcada (Visão Computacional e Reconhecimento de Voz Offline), arquitetura de automação e manutenção avançada de hardware e sistemas." data-en="Software Engineer specializing in Native Android development (Kotlin), embedded AI (Computer Vision & Offline Voice Recognition), automation architecture, and advanced hardware & systems maintenance.">
-            Engenheiro de Software especializado no ecossistema Android Nativo (Kotlin), inteligência artificial embarcada (Visão Computacional e Reconhecimento de Voz Offline), arquitetura de automação e manutenção avançada de hardware e sistemas.
+        <p class="hero-description" data-pt="Engenheiro de Software especializado na arquitetura de aplicações Android Nativas (Kotlin), Visão Computacional embarcada, Reconhecimento de Voz Offline e substituição de hardwares proprietários de alto custo por software inteligente." data-en="Software Engineer specializing in Native Android Architecture (Kotlin), Embedded Computer Vision, Offline Voice Recognition, and replacing expensive proprietary hardware with intelligent software.">
+            Engenheiro de Software especializado na arquitetura de aplicações Android Nativas (Kotlin), Visão Computacional embarcada, Reconhecimento de Voz Offline e substituição de hardwares proprietários de alto custo por software inteligente.
         </p>
         <div class="cta-group">
-            <a href="#projects" class="btn-primary" data-pt="Ver Aplicativos" data-en="View Apps">Ver Aplicativos</a>
-            <a href="#skills" class="btn-secondary" data-pt="Habilidades Técnicas" data-en="Technical Skills">Habilidades Técnicas</a>
+            <a href="#projects" class="btn-primary" data-pt="Explorar Arquiteturas" data-en="Explore Architectures">Explorar Arquiteturas</a>
+            <a href="#skills" class="btn-secondary" data-pt="Stack Técnico" data-en="Technical Stack">Stack Técnico</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="reveal">
         <div class="section-header">
-            <h2 class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+            <h2 class="section-title" data-pt="Engenharia & Filosofia" data-en="Engineering & Philosophy">Engenharia & Filosofia</h2>
         </div>
-        <div class="glass-card">
-            <p style="font-size: 1.1rem; color: #d1d5db; margin-bottom: 1rem;" data-pt="Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), dedico minha trajetória ao projeto e construção de soluções autônomas sob a iniciativa ZacCode." data-en="Pursuing a degree in Systems Analysis and Software Development at Universidade Veiga de Almeida (UVA), I dedicate my path to engineering autonomous solutions under the ZacCode initiative.">
-                Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), dedico minha trajetória ao projeto e construção de soluções autônomas sob a iniciativa ZacCode.
+        <div class="glass-card" style="cursor: default;">
+            <p style="font-size: 1.1rem; color: #d1d5db; margin-bottom: 1rem;" data-pt="Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), foco meu trabalho no ecossistema ZacCode construindo arquiteturas móveis de alta performance." data-en="Pursuing a degree in Systems Analysis and Software Development at Universidade Veiga de Almeida (UVA), I focus my engineering on the ZacCode ecosystem building high-performance mobile architectures.">
+                Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), foco meu trabalho no ecossistema ZacCode construindo arquiteturas móveis de alta performance.
             </p>
-            <p style="color: var(--text-muted);" data-pt="Minha experiência une o desenvolvimento de aplicativos Android nativos com algoritmos de ponta — incluindo modelos de estimação de pose, comandos de voz operando 100% offline (Vosk/JNA), processamento multimídia e visão computacional — além de profundo domínio em manutenção, dimensionamento e montagem de componentes de hardware e sistemas computacionais." data-en="My expertise bridges native Android development with cutting-edge algorithms—including pose estimation models, 100% offline voice recognition (Vosk/JNA), multimedia processing, and computer vision—alongside deep knowledge in hardware component specification, assembly, and systems maintenance.">
-                Minha experiência une o desenvolvimento de aplicativos Android nativos com algoritmos de ponta — incluindo modelos de estimação de pose, comandos de voz operando 100% offline (Vosk/JNA), processamento multimídia e visão computacional — além de profundo domínio em manutenção, dimensionamento e montagem de componentes de hardware e sistemas computacionais.
+            <p style="color: var(--text-muted);" data-pt="Meu primeiro projeto representou um marco de engenharia: transformar um smartphone comum em um coletor de dados de análise esportiva por visão computacional, substituindo equipamentos industriais e coletores dedicados que custam mais de R$ 5.000,00 no mercado." data-en="My first project represented an engineering milestone: transforming a standard smartphone into a computer vision sports data collector, replacing dedicated industrial collectors costing over R$ 5,000.00.">
+                Meu primeiro projeto representou um marco de engenharia: transformar um smartphone comum em um coletor de dados de análise esportiva por visão computacional, substituindo equipamentos industriais e coletores dedicados que custam mais de R$ 5.000,00 no mercado.
             </p>
         </div>
     </section>
@@ -455,43 +591,43 @@
         </div>
         <div class="grid-2">
             
-            <div class="glass-card">
-                <div class="skill-category-title" data-pt="Android Nativo & Front-End" data-en="Native Android & Front-End">Android Nativo & Front-End</div>
+            <div class="glass-card" style="cursor: default;">
+                <div class="skill-category-title" data-pt="Android Nativo & Arquitetura" data-en="Native Android & Architecture">Android Nativo & Arquitetura</div>
                 <ul class="skills-list">
-                    <li>• <strong>Kotlin:</strong> Coroutines, Lambdas, Delegates, Volatile, Null-Safety & Data Classes</li>
-                    <li>• <strong>Android Jetpack & CameraX:</strong> PreviewView, ImageAnalysis.Analyzer, VideoCapture & Recorder</li>
-                    <li>• <strong>Arquitetura & UI:</strong> ViewBinding, Custom Canvas Views, HUDs Translúcidos, ConstraintLayout XML & Gradle Kotlin DSL (.gradle.kts)</li>
-                    <li>• <strong>Background Services:</strong> Foreground Services, Async Threading & SharedPreferences</li>
+                    <li>• <strong>Kotlin Core:</strong> Coroutines, Asynchronous Flow, Lambdas, Delegates, Volatile, Thread-Safety & Data Classes</li>
+                    <li>• <strong>CameraX Engine:</strong> PreviewView, Continuous Frame Analysis (ImageAnalysis.Analyzer), VideoCapture & Recorder</li>
+                    <li>• <strong>Interface & Renderização:</strong> ViewBinding, Custom Canvas Overlays, HUDs Translúcidos Esportivos & ConstraintLayout XML</li>
+                    <li>• <strong>Serviços de Segundo Plano:</strong> Foreground Services para captura constante, Async Threads & SharedPreferences</li>
                 </ul>
             </div>
 
-            <div class="glass-card">
+            <div class="glass-card" style="cursor: default;">
                 <div class="skill-category-title" data-pt="IA, Visão & Voz Offline" data-en="AI, Vision & Offline Voice">IA, Visão & Voz Offline</div>
                 <ul class="skills-list">
-                    <li>• <strong>Computer Vision:</strong> Google MediaPipe Tasks Vision & Google ML Kit Pose Detection (Landmark Tracking)</li>
-                    <li>• <strong>Offline Voice Recognition:</strong> Vosk SDK + JNA (Java Native Access) para parsing de comandos de voz sem internet</li>
-                    <li>• <strong>Processamento Biométrico & Áudio:</strong> Biometria facial, TextToSpeech (TTS API) e isolamento de Stems de áudio</li>
+                    <li>• <strong>Visão Computacional:</strong> Google ML Kit Pose Detection & Google MediaPipe Tasks Vision (Landmarks Corporal)</li>
+                    <li>• <strong>Voz Offline (Offline Speech Engine):</strong> Vosk SDK + JNA (Java Native Access) rodando em C/C++ sem dependência de internet</li>
+                    <li>• <strong>Processamento Biométrico & Áudio:</strong> Reconhecimento facial biométrico, TextToSpeech (TTS API) e Stem Isolation</li>
                     <li>• <strong>IA Generativa:</strong> Consumo e integração avançada com a API do Google Gemini</li>
                 </ul>
             </div>
 
-            <div class="glass-card">
-                <div class="skill-category-title" data-pt="Back-End, Automação & Nuvem" data-en="Back-End, Automation & Cloud">Back-End, Automação & Nuvem</div>
+            <div class="glass-card" style="cursor: default;">
+                <div class="skill-category-title" data-pt="Back-End & Automação" data-en="Back-End & Automation">Back-End & Automação</div>
                 <ul class="skills-list">
-                    <li>• <strong>Python:</strong> Pipelines de Web Scraping, mineração de dados não estruturados e scripts de automação</li>
-                    <li>• <strong>Bancos de Dados & Cloud:</strong> Firebase Realtime Database, Firebase Auth & Vercel Deployments</li>
-                    <li>• <strong>APIs & Microsserviços:</strong> Integrações RESTful, comunicação com sistemas de gestão (Gestão Flash)</li>
-                    <li>• <strong>DevOps & Ferramentas:</strong> Git, GitHub Codespaces, Android Studio & Tripo AI (Modelagem 3D)</li>
+                    <li>• <strong>Python Data Pipelines:</strong> Scripts para Web Scraping, mineração de dados não estruturados e automação</li>
+                    <li>• <strong>Bancos de Dados & Cloud:</strong> Firebase Realtime Database, Firebase Auth & Vercel Serverless Deployments</li>
+                    <li>• <strong>APIs & Microsserviços:</strong> Integração RESTful, suporte a relatórios operacionais (Gestão Flash)</li>
+                    <li>• <strong>DevOps & Ferramentas:</strong> Git, GitHub Codespaces, Gradle Kotlin DSL (.gradle.kts) e Android Studio</li>
                 </ul>
             </div>
 
-            <div class="glass-card">
-                <div class="skill-category-title" data-pt="Manutenção de Hardware & Sistemas" data-en="Hardware & Systems Maintenance">Manutenção de Hardware & Sistemas</div>
+            <div class="glass-card" style="cursor: default;">
+                <div class="skill-category-title" data-pt="Hardware & Manutenção de Sistemas" data-en="Hardware & Systems Maintenance">Hardware & Manutenção de Sistemas</div>
                 <ul class="skills-list">
-                    <li>• <strong>Montagem & Upgrades:</strong> Arquitetura e montagem de computadores desktop, dimensionamento de CPUs, memórias RAM DDR4, SSDs NVMe PCIe e fontes ATX</li>
-                    <li>• <strong>Refrigeração & Periféricos:</strong> Instalação de sistemas de refrigeração ARGB, adaptadores de rede/Bluetooth e periféricos de alta precisão</li>
-                    <li>• <strong>Diagnóstico de Sistemas:</strong> Identificação e resolução de gargalos de hardware, testes de estabilidade e substituição de componentes</li>
-                    <li>• <strong>Sistemas Operacionais:</strong> Formatação, otimização de SO, instalação de drivers e gerenciamento de permissões</li>
+                    <li>• <strong>Dimensionamento & Montagem:</strong> Seleção e montagem de componentes de alta performance (CPUs, DDR4, NVMe PCIe e Fontes ATX)</li>
+                    <li>• <strong>Sistemas de Refrigeração:</strong> Instalação e teste de kits ARGB, controle térmico e otimização de periféricos</li>
+                    <li>• <strong>Diagnóstico de Gargalos:</strong> Resolução de falhas de hardware, testes de estresse e substituição de módulos defeituosos</li>
+                    <li>• <strong>Sistemas Operacionais:</strong> Formatação técnica, tuning de SO, drivers e controle de permissões de baixo nível</li>
                 </ul>
             </div>
 
@@ -501,205 +637,186 @@
     <!-- Projects Portfolio Section -->
     <section id="projects" class="reveal">
         <div class="section-header">
-            <h2 class="section-title" data-pt="Aplicativos & Projetos" data-en="Applications & Projects">Aplicativos & Projetos</h2>
+            <h2 class="section-title" data-pt="Arquitetura de Aplicativos" data-en="Application Architecture">Arquitetura de Aplicativos</h2>
         </div>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;" data-pt="Clique em qualquer cartão para abrir o detalhamento arquitetural completo e visão de desenvolvimento do aplicativo." data-en="Click on any card to open full architectural details and application development vision.">
+            Clique em qualquer cartão para abrir o detalhamento arquitetural completo e visão de desenvolvimento do aplicativo.
+        </p>
+
         <div class="grid-2">
 
-            <!-- ZacSports -->
-            <div class="glass-card project-card">
+            <!-- ZacVolley (O PRIMEIRO APLICATIVO) -->
+            <div class="glass-card project-card" onclick="openProjectModal('zacvolley')">
                 <div>
-                    <span class="project-badge">Android / Computer Vision / Voice</span>
-                    <h3 class="project-title">ZacSports (ZacEsportes)</h3>
-                    <p style="color: var(--text-muted);" data-pt="Aplicativo Android para análise esportiva em tempo real e gravação automatizada de highlights via IA e comandos de voz." data-en="Android application for real-time sports analysis and automated highlight recording via AI and voice commands.">
-                        Aplicativo Android para análise esportiva em tempo real e gravação automatizada de highlights via IA e comandos de voz.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Implementação do Google MediaPipe Tasks Vision rodando em threads assíncronas para pose tracking sem travar o PreviewView do CameraX. Sistema de voz hands-free 100% offline alimentado pelo Vosk SDK via JNA, com respostas em áudio por TextToSpeech, controle de lente Ultra-Wide (0.5x) e HUD dinâmico." data-en="Engineered Google MediaPipe Tasks Vision on asynchronous threads for lag-free CameraX PreviewView pose tracking. Integrated 100% offline hands-free voice control powered by Vosk SDK via JNA with TextToSpeech audio feedback, Ultra-Wide (0.5x) lens control, and dynamic translucent HUD.">
-                            Implementação do Google MediaPipe Tasks Vision rodando em threads assíncronas para pose tracking sem travar o PreviewView do CameraX. Sistema de voz hands-free 100% offline alimentado pelo Vosk SDK via JNA, com respostas em áudio por TextToSpeech, controle de lente Ultra-Wide (0.5x) e HUD dinâmico.
+                    <span class="project-badge first-app">⭐ PRIMEIRO APP (ZaCode)</span>
+                    <h3 class="project-title">ZacVolley (ZacVolly)</h3>
+                    <div class="arch-highlight-box">
+                        <strong data-pt="PADRÃO ARQUITETURAL & FLUXO" data-en="ARCHITECTURAL PATTERN & FLOW">PADRÃO ARQUITETURAL & FLUXO</strong>
+                        <span data-pt="Pipeline de Visão Computacional em tempo real acoplado a um Foreground VoiceService. Processa estimativa de poses via ML Kit e calcula intersecções geométricas (ROI Hitbox) para automação de destaques." data-en="Real-time Computer Vision Pipeline coupled with Foreground VoiceService. Processes ML Kit pose estimation and calculates geometric spatial intersections (ROI Hitbox).">
+                            Pipeline de Visão Computacional em tempo real acoplado a um Foreground VoiceService. Processa estimativa de poses via ML Kit e calcula intersecções geométricas (ROI Hitbox) para automação de destaques.
                         </span>
                     </div>
+                    <div class="hardware-replacement-tag">
+                        💰 <strong>Substituição de Hardware:</strong> Substituiu coletores de dados de R$ 5.000+ por um app Android.
+                    </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">MediaPipe</span>
-                    <span class="tech-tag">Vosk SDK (Offline)</span>
-                    <span class="tech-tag">JNA</span>
-                    <span class="tech-tag">CameraX</span>
-                    <span class="tech-tag">TextToSpeech</span>
+                <div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Kotlin Nativo</span>
+                        <span class="tech-tag">ML Kit Pose</span>
+                        <span class="tech-tag">CameraX Recorder</span>
+                        <span class="tech-tag">Foreground Service</span>
+                        <span class="tech-tag">VideoTrimmer</span>
+                    </div>
+                    <div class="click-prompt">
+                        <span data-pt="Clique para ampliar detalhes técnicos" data-en="Click to view full technical breakdown">Clique para ampliar detalhes técnicos</span> &rarr;
+                    </div>
                 </div>
             </div>
 
-            <!-- ZacVolley -->
-            <div class="glass-card project-card">
+            <!-- ZacSports -->
+            <div class="glass-card project-card" onclick="openProjectModal('zacsports')">
                 <div>
-                    <span class="project-badge first-app">Primeiro App ZacCode</span>
-                    <h3 class="project-title">ZacVolley (ZacVolly)</h3>
-                    <p style="color: var(--text-muted);" data-pt="Primeira aplicação Android nativa desenvolvida na ZacCode, focada na gravação inteligente de partidas e detecção automática de saltos." data-en="First native Android application built under ZacCode, focusing on smart match recording and automated jump detection.">
-                        Primeira aplicação Android nativa desenvolvida na ZacCode, focada na gravação inteligente de partidas e detecção automática de saltos.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Uso do Google ML Kit Pose Detection para monitoramento de saltos em zonas de calibração personalizadas (ROI - Region of Interest/Hitbox da rede). Recorte automatizado de highlights em segundo plano (VideoTrimmer) para economizar armazenamento, VoiceService em Foreground e renderização em Canvas View sobreposta." data-en="Utilized Google ML Kit Pose Detection for jump tracking within calibrated court zones (Net Hitbox/ROI). Implemented background automated highlight trimming (VideoTrimmer) to save storage, Foreground VoiceService, and custom Canvas View overlay drawing.">
-                            Uso do Google ML Kit Pose Detection para monitoramento de saltos em zonas de calibração personalizadas (ROI - Region of Interest/Hitbox da rede). Recorte automatizado de highlights em segundo plano (VideoTrimmer) para economizar armazenamento, VoiceService em Foreground e renderização em Canvas View sobreposta.
+                    <span class="project-badge">Android / Vision & Speech</span>
+                    <h3 class="project-title">ZacSports (ZacEsportes)</h3>
+                    <div class="arch-highlight-box">
+                        <strong data-pt="PADRÃO ARQUITETURAL & FLUXO" data-en="ARCHITECTURAL PATTERN & FLOW">PADRÃO ARQUITETURAL & FLUXO</strong>
+                        <span data-pt="Arquitetura de Threads concorrentes separando o PreviewView do CameraX do motor de IA MediaPipe (C++ Wrappers) e do reconhecedor de voz offline Vosk via JNA." data-en="Concurrent Threading Architecture isolating CameraX PreviewView from MediaPipe AI engine (C++ Wrappers) and offline Vosk speech recognition via JNA.">
+                            Arquitetura de Threads concorrentes separando o PreviewView do CameraX do motor de IA MediaPipe (C++ Wrappers) e do reconhecedor de voz offline Vosk via JNA.
                         </span>
                     </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">ML Kit Pose Detection</span>
-                    <span class="tech-tag">CameraX Recorder</span>
-                    <span class="tech-tag">Foreground Service</span>
-                    <span class="tech-tag">Custom Canvas</span>
+                <div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MediaPipe Vision</span>
+                        <span class="tech-tag">Vosk SDK (Offline)</span>
+                        <span class="tech-tag">JNA C/C++</span>
+                        <span class="tech-tag">CameraX Ultra-Wide</span>
+                        <span class="tech-tag">TextToSpeech</span>
+                    </div>
+                    <div class="click-prompt">
+                        <span data-pt="Clique para ampliar detalhes técnicos" data-en="Click to view full technical breakdown">Clique para ampliar detalhes técnicos</span> &rarr;
+                    </div>
                 </div>
             </div>
 
             <!-- ZacPoint -->
-            <div class="glass-card project-card">
+            <div class="glass-card project-card" onclick="openProjectModal('zacpoint')">
                 <div>
-                    <span class="project-badge">Corporate / Attendance</span>
-                    <h3 class="project-title">ZacPoint & ZacPoint Colaborador</h3>
-                    <p style="color: var(--text-muted);" data-pt="Ecossistema corporativo inteligente para controle de ponto e gestão de assiduidade." data-en="Intelligent enterprise ecosystem for employee attendance and workforce management.">
-                        Ecossistema corporativo inteligente para controle de ponto e gestão de assiduidade.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Desenvolvimento de motor biométrico facial para autenticação em tempo real, prevenção de fraudes, cálculo automático de banco de horas, registro sincronizado de pausas/entradas e painel administrativo em nuvem." data-en="Engineered facial biometric validation for real-time authentication, fraud prevention, automated hour bank calculation, synchronized pause/time entry logging, and cloud administrative portal.">
-                            Desenvolvimento de motor biométrico facial para autenticação em tempo real, prevenção de fraudes, cálculo automático de banco de horas, registro sincronizado de pausas/entradas e painel administrativo em nuvem.
+                    <span class="project-badge">Corporate / Security</span>
+                    <h3 class="project-title">ZacPoint Ecosystem</h3>
+                    <div class="arch-highlight-box">
+                        <strong data-pt="PADRÃO ARQUITETURAL & FLUXO" data-en="ARCHITECTURAL PATTERN & FLOW">PADRÃO ARQUITETURAL & FLUXO</strong>
+                        <span data-pt="Sistema corporativo distribuído com motor de validação biométrica facial em tempo real, sincronização em nuvem via Firebase Realtime Database e cálculo automático de horas." data-en="Distributed enterprise system featuring real-time facial biometric validation engine, Firebase Realtime Database cloud syncing, and automated hour bank calculation.">
+                            Sistema corporativo distribuído com motor de validação biométrica facial em tempo real, sincronização em nuvem via Firebase Realtime Database e cálculo automático de horas.
                         </span>
                     </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Kotlin</span>
-                    <span class="tech-tag">Android Studio</span>
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Biometria Facial</span>
+                <div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Biometria Facial</span>
+                        <span class="tech-tag">Firebase Realtime DB</span>
+                        <span class="tech-tag">Android Cloud Admin</span>
+                    </div>
+                    <div class="click-prompt">
+                        <span data-pt="Clique para ampliar detalhes técnicos" data-en="Click to view full technical breakdown">Clique para ampliar detalhes técnicos</span> &rarr;
+                    </div>
                 </div>
             </div>
 
             <!-- MAPA TIDS -->
-            <div class="glass-card project-card">
+            <div class="glass-card project-card" onclick="openProjectModal('mapatids')">
                 <div>
                     <span class="project-badge">Mobility / Geolocation</span>
                     <h3 class="project-title">MAPA TIDS</h3>
-                    <p style="color: var(--text-muted);" data-pt="Plataforma de navegação urbana e mapeamento de transporte regional." data-en="Urban navigation and regional transit mapping platform.">
-                        Plataforma de navegação urbana e mapeamento de transporte regional.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Integração avançada com a API do Google Maps, roteamento em tempo real, solicitação de corridas por categorias (carro e moto) e compartilhamento dinâmico de localização." data-en="Advanced Google Maps API integration, real-time route optimization, multi-modal ride dispatching (car and motorcycle), and dynamic live location sharing.">
-                            Integração avançada com a API do Google Maps, roteamento em tempo real, solicitação de corridas por categorias (carro e moto) e compartilhamento dinâmico de localização.
+                    <div class="arch-highlight-box">
+                        <strong data-pt="PADRÃO ARQUITETURAL & FLUXO" data-en="ARCHITECTURAL PATTERN & FLOW">PADRÃO ARQUITETURAL & FLUXO</strong>
+                        <span data-pt="Arquitetura de mobilidade com integração do Google Maps SDK, cálculo dinâmico de vetores de rota e controle de despacho multimodal (Carro/Moto) em tempo real." data-en="Mobility architecture with Google Maps SDK integration, dynamic route vector calculations, and multi-modal ride dispatching in real time.">
+                            Arquitetura de mobilidade com integração do Google Maps SDK, cálculo dinâmico de vetores de rota e controle de despacho multimodal (Carro/Moto) em tempo real.
                         </span>
                     </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Google Maps API</span>
-                    <span class="tech-tag">Geolocalização</span>
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Android</span>
+                <div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Google Maps SDK</span>
+                        <span class="tech-tag">Geolocalização</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Android Native</span>
+                    </div>
+                    <div class="click-prompt">
+                        <span data-pt="Clique para ampliar detalhes técnicos" data-en="Click to view full technical breakdown">Clique para ampliar detalhes técnicos</span> &rarr;
+                    </div>
                 </div>
             </div>
 
             <!-- Gesture Synth -->
-            <div class="glass-card project-card">
+            <div class="glass-card project-card" onclick="openProjectModal('gesturesynth')">
                 <div>
-                    <span class="project-badge">Computer Vision / Audio</span>
+                    <span class="project-badge">Computer Vision / Web Audio</span>
                     <h3 class="project-title">Gesture Synth / ZacSynth</h3>
-                    <p style="color: var(--text-muted);" data-pt="Sintetizador virtual com controle generativo por visão computacional." data-en="Virtual synthesizer powered by computer vision gesture control.">
-                        Sintetizador virtual com controle generativo por visão computacional.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Processamento de vídeo para rastreamento de pontos gestuais das mãos e corpo, traduzindo movimentos em parâmetros de síntese de áudio em tempo real com integração a separadores de faixas musicais." data-en="Video stream processing for tracking hand and body gesture coordinates, mapping motion directly into real-time audio synthesis parameters alongside musical stem isolation.">
-                            Processamento de vídeo para rastreamento de pontos gestuais das mãos e corpo, traduzindo movimentos em parâmetros de síntese de áudio em tempo real com integração a separadores de faixas musicais.
+                    <div class="arch-highlight-box">
+                        <strong data-pt="PADRÃO ARQUITETURAL & FLUXO" data-en="ARCHITECTURAL PATTERN & FLOW">PADRÃO ARQUITETURAL & FLUXO</strong>
+                        <span data-pt="Sintetizador generativo web alimentado por mapeamento de pontos de visão computacional em tempo real e algoritmos de isolamento de Stems de áudio." data-en="Web generative synthesizer powered by real-time computer vision keypoint spatial mapping and audio stem isolation algorithms.">
+                            Sintetizador generativo web alimentado por mapeamento de pontos de visão computacional em tempo real e algoritmos de isolamento de Stems de áudio.
                         </span>
                     </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Visão Computacional</span>
-                    <span class="tech-tag">Web Audio API</span>
-                    <span class="tech-tag">Vercel</span>
+                <div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Visão Computacional</span>
+                        <span class="tech-tag">Web Audio API</span>
+                        <span class="tech-tag">Vercel Deploy</span>
+                    </div>
+                    <div class="click-prompt">
+                        <span data-pt="Clique para ampliar detalhes técnicos" data-en="Click to view full technical breakdown">Clique para ampliar detalhes técnicos</span> &rarr;
+                    </div>
                 </div>
             </div>
 
             <!-- ZacMusic -->
-            <div class="glass-card project-card">
+            <div class="glass-card project-card" onclick="openProjectModal('zacmusic')">
                 <div>
-                    <span class="project-badge">Networking / Sync</span>
+                    <span class="project-badge">Sockets / Local Wireless</span>
                     <h3 class="project-title">ZacMusic Arena</h3>
-                    <p style="color: var(--text-muted);" data-pt="Plataforma de sincronização musical e visual interativa para eventos." data-en="Interactive multi-device musical and visual synchronization platform.">
-                        Plataforma de sincronização musical e visual interativa para eventos.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Criação de protocolo de comunicação via rede Wi-Fi local e conexão instantânea por QR Code, garantindo sincronia de baixa latência em reproduções de áudio e iluminação entre múltiplos dispositivos." data-en="Custom wireless communication protocol over local Wi-Fi networks with instant QR code pairing, delivering low-latency audio and lighting synchronization across multiple connected devices.">
-                            Criação de protocolo de comunicação via rede Wi-Fi local e conexão instantânea por QR Code, garantindo sincronia de baixa latência em reproduções de áudio e iluminação entre múltiplos dispositivos.
+                    <div class="arch-highlight-box">
+                        <strong data-pt="PADRÃO ARQUITETURAL & FLUXO" data-en="ARCHITECTURAL PATTERN & FLOW">PADRÃO ARQUITETURAL & FLUXO</strong>
+                        <span data-pt="Protocolo de comunicação sem fio via Sockets de baixa latência em rede Wi-Fi local com pareamento rápido por QR Code para sincronia multidispositivo." data-en="Wireless communication protocol using low-latency Sockets on local Wi-Fi with instant QR Code pairing for multi-device sync.">
+                            Protocolo de comunicação sem fio via Sockets de baixa latência em rede Wi-Fi local com pareamento rápido por QR Code para sincronia multidispositivo.
                         </span>
                     </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Local Sockets</span>
-                    <span class="tech-tag">QR Code Sync</span>
-                    <span class="tech-tag">Android Native</span>
-                    <span class="tech-tag">Audio Engine</span>
-                </div>
-            </div>
-
-            <!-- Automation & Data Mining -->
-            <div class="glass-card project-card">
                 <div>
-                    <span class="project-badge">Back-End / Data Science</span>
-                    <h3 class="project-title">Módulos de Automação & Mineração</h3>
-                    <p style="color: var(--text-muted);" data-pt="Microsserviços de raspagem web e estruturação de dados corporativos." data-en="Web scraping microservices and administrative data extraction pipelines.">
-                        Microsserviços de raspagem web e estruturação de dados corporativos.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Engenharia de pipelines em Python para captura automatizada de dados, tratamento de informações não estruturadas e integração de relatórios gerenciais com sistemas terceiros (como Gestão Flash)." data-en="Engineered automated Python pipelines for data extraction, unstructured payload formatting, and operational analytics integration with third-party systems like Gestão Flash.">
-                            Engenharia de pipelines em Python para captura automatizada de dados, tratamento de informações não estruturadas e integração de relatórios gerenciais com sistemas terceiros (como Gestão Flash).
-                        </span>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Local Sockets</span>
+                        <span class="tech-tag">QR Code Sync</span>
+                        <span class="tech-tag">Android Engine</span>
                     </div>
-                </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Web Scraping</span>
-                    <span class="tech-tag">REST APIs</span>
-                    <span class="tech-tag">Gestão Flash API</span>
-                </div>
-            </div>
-
-            <!-- ZacCode Hub & ZACurrículo -->
-            <div class="glass-card project-card">
-                <div>
-                    <span class="project-badge">Web Platforms / AI</span>
-                    <h3 class="project-title">ZacCode Portal & ZACurrículo</h3>
-                    <p style="color: var(--text-muted);" data-pt="Portais web para centralização de serviços e apresentação com IA." data-en="Web platforms for service integration and AI-assisted professional showcase.">
-                        Portais web para centralização de serviços e apresentação com IA.
-                    </p>
-                    <div class="project-dev-vision">
-                        <strong data-pt="VISÃO DE DESENVOLVIMENTO" data-en="DEVELOPMENT VISION">VISÃO DE DESENVOLVIMENTO</strong>
-                        <span data-pt="Arquitetura de hubs web com consumo direto da API do Gemini para personalização dinâmica de dados profissionais e disponibilização dos serviços da ZacCode." data-en="Web portal architecture integrated directly with the Gemini API for dynamic professional data rendering and continuous showcase of the ZacCode ecosystem.">
-                            Arquitetura de hubs web com consumo direto da API do Gemini para personalização dinâmica de dados profissionais e disponibilização dos serviços da ZacCode.
-                        </span>
+                    <div class="click-prompt">
+                        <span data-pt="Clique para ampliar detalhes técnicos" data-en="Click to view full technical breakdown">Clique para ampliar detalhes técnicos</span> &rarr;
                     </div>
-                </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Gemini API</span>
-                    <span class="tech-tag">GitHub Codespaces</span>
-                    <span class="tech-tag">Web Design</span>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Modal Popup Dynamic Container -->
+    <div class="modal-overlay" id="project-modal" onclick="closeModalOnOverlay(event)">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+            <div id="modal-content">
+                <!-- Content generated dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer / Contact -->
     <footer id="contact">
         <h2 style="margin-bottom: 1rem; color: #fff;" data-pt="Vamos Construir Algo Incrível Juntos?" data-en="Let's Build Something Great Together">Vamos Construir Algo Incrível Juntos?</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;" data-pt="Disponível para colaborações em desenvolvimento mobile, inteligência artificial e soluções de engenharia de software." data-en="Available for software engineering collaborations in mobile development, AI, and software systems.">
-            Disponível para colaborações em desenvolvimento mobile, inteligência artificial e soluções de engenharia de software.
+        <p style="color: var(--text-muted); margin-bottom: 2rem;" data-pt="Disponível para oportunidades em Engenharia de Software, Desenvolvimento Android Nativo, Visão Computacional e Soluções de Hardware." data-en="Available for opportunities in Software Engineering, Native Android Development, Computer Vision, and Hardware Solutions.">
+            Disponível para oportunidades em Engenharia de Software, Desenvolvimento Android Nativo, Visão Computacional e Soluções de Hardware.
         </p>
         <div class="social-links">
             <a href="https://github.com" target="_blank" class="social-icon" title="GitHub">GH</a>
@@ -707,13 +824,13 @@
             <a href="mailto:isac.goncalves@example.com" class="social-icon" title="Email">@</a>
         </div>
         <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.3); font-family: var(--font-code);">
-            &copy; 2026 Isac Gonçalves da Silva • Powered by ZacCode Engine
+            &copy; 2026 Isac Gonçalves da Silva • Developed under ZacCode Engine
         </p>
     </footer>
 
     <!-- JavaScript Engine -->
     <script>
-        // Interactive Canvas Animation
+        // Interactive Canvas Background
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -772,14 +889,14 @@
         // Typewriter Effect
         const phrases = {
             pt: [
-                "Desenvolvedor Android Nativo (Kotlin)", 
-                "Especialista em Visão Computacional & Voz", 
-                "Engenheiro de Hardware & Manutenção de Sistemas"
+                "Engenheiro de Software Android Nativo (Kotlin)", 
+                "Especialista em Visão Computacional Embarcada", 
+                "Desenvolvedor de Soluções de Hardware & IA"
             ],
             en: [
-                "Native Android Developer (Kotlin)", 
-                "Computer Vision & Voice Specialist", 
-                "Hardware & Systems Maintenance Engineer"
+                "Native Android Software Engineer (Kotlin)", 
+                "Embedded Computer Vision Specialist", 
+                "Hardware & AI Solutions Developer"
             ]
         };
         let currentLang = 'pt';
@@ -815,6 +932,250 @@
         }
         type();
 
+        // Database of Project Architectural Details for Modal
+        const projectsData = {
+            zacvolley: {
+                badge: "⭐ MEU PRIMEIRO APLICATIVO (ZaCode Engine)",
+                title: "ZacVolley (ZacVolly) — Coletor Esportivo por IA",
+                pt: {
+                    problem: "<strong>Substituição de Hardware Proprietário de Alto Custo:</strong> Projetado para atuar como um coletor de dados inteligente para partidas de Vôlei, substituindo equipamentos industriais e de análise que custam mais de R$ 5.000,00 por um único smartphone.",
+                    features: [
+                        "<strong>Análise de Movimento e Poses em Tempo Real:</strong> Identifica pontos corporais (landmarks de ombros, quadris, joelhos e tornozelos) rastreando jogadores continuamente.",
+                        "<strong>Detecção Automática de Saltos:</strong> Monitora zonas da quadra e dispara a gravação de highlights ao detectar saltos no bloqueio ou ataque.",
+                        "<strong>Edição de Vídeo Inteligente (Modo Match):</strong> Grava a partida contínua e recorta apenas os trechos marcados (VideoTrimmer em background), descartando o vídeo bruto para poupar espaço.",
+                        "<strong>Controle por Voz Hands-Free:</strong> Reconhecimento em tempo real para comandos como 'Vôlei', 'Ponto' e 'Perda' sem tocar no celular.",
+                        "<strong>Sintetizador de Voz (TTS):</strong> Confirmações sonoras para o usuário em quadra ('Jogada marcada', 'Vídeo descartado').",
+                        "<strong>Calibração de Quadra (ROI / Hitbox):</strong> Permite ajustar as linhas da rede e do chão na tela para delimitar a monitoria da IA."
+                    ],
+                    architecture: [
+                        "<strong>Linguagem:</strong> Kotlin 100% Nativo (Coroutines, Delegates, Volatile, Null-Safety, Data Classes).",
+                        "<strong>Google ML Kit Pose Detection (com.google.mlkit.vision.pose):</strong> Executado em STREAM_MODE de forma assíncrona para rastreamento de esqueleto.",
+                        "<strong>Android CameraX:</strong> Gerenciamento do preview da câmera e análise contínua de quadros via ImageAnalysis.Analyzer e VideoCapture.",
+                        "<strong>Foreground Service (VoiceService):</strong> Garante processamento contínuo de voz em segundo plano com baixíssima latência.",
+                        "<strong>Custom Canvas View (PoseOverlayView):</strong> Desenho vetorial sobreposto à câmera para renderizar a Hitbox e o esqueleto dos atletas."
+                    ]
+                },
+                en: {
+                    problem: "<strong>Replacing High-Cost Proprietary Hardware:</strong> Designed to function as a smart sports data collector for Volleyball matches, replacing dedicated industrial collection hardware costing over R$ 5,000.00 with a standard smartphone.",
+                    features: [
+                        "<strong>Real-time Motion and Pose Analysis:</strong> Tracks body landmarks (shoulders, hips, knees, ankles) across players continuously.",
+                        "<strong>Automated Jump Detection:</strong> Monitors court zones and automatically triggers highlight capture upon detecting jump attacks or blocks.",
+                        "<strong>Intelligent Background Video Trimming:</strong> Records full match and extracts only target clips via background VideoTrimmer engine.",
+                        "<strong>Hands-Free Voice Commands:</strong> Real-time voice recognition for 'Volley', 'Point', and 'Discard' commands.",
+                        "<strong>Voice Feedback (TTS):</strong> Audio confirmations in real-time ('Play saved', 'Clip discarded').",
+                        "<strong>Court Calibration (ROI / Hitbox):</strong> Visual adjustment of net and floor boundaries for precision AI monitoring."
+                    ],
+                    architecture: [
+                        "<strong>Language:</strong> 100% Native Kotlin (Coroutines, Delegates, Volatile, Null-Safety, Data Classes).",
+                        "<strong>Google ML Kit Pose Detection:</strong> STREAM_MODE asynchronous execution for skeleton tracking.",
+                        "<strong>Android CameraX:</strong> Camera preview pipeline and frame analysis via ImageAnalysis.Analyzer.",
+                        "<strong>Foreground Service (VoiceService):</strong> Background voice processing with ultra-low latency.",
+                        "<strong>Custom Canvas View (PoseOverlayView):</strong> Real-time overlay rendering for net hitboxes and player skeletons."
+                    ]
+                }
+            },
+            zacsports: {
+                badge: "Android / Vision & Speech Engine",
+                title: "ZacSports (ZacEsportes) — Análise Esportiva",
+                pt: {
+                    problem: "<strong>Análise Hands-Free de Alta Performance:</strong> Aplicativo focado na gravação automatizada de saques e movimentos esportivos sem interferir no ritmo do treino.",
+                    features: [
+                        "<strong>Rastreamento de Poses por IA:</strong> Identifica a execução de saques e posições corporais em tempo real.",
+                        "<strong>Reconhecimento de Voz Offline:</strong> Funciona 100% sem internet usando o Vosk SDK para comandos em português.",
+                        "<strong>Suporte a Lentes Múltiplas:</strong> Suporta alteração dinâmica para lente Ultra-Wide 0.5x para enquadramento total da quadra.",
+                        "<strong>HUD Esportivo Translúcido:</strong> Exibe status de gravação, pulso luminoso e feedback de voz diretamente na tela."
+                    ],
+                    architecture: [
+                        "<strong>Google MediaPipe Tasks Vision:</strong> Framework de IA de alto desempenho compilado em C++ e consumido via Kotlin.",
+                        "<strong>Vosk SDK + JNA (Java Native Access):</strong> Conexão direta com biblioteca C/C++ nativa para escuta offline do microfone.",
+                        "<strong>CameraX Multilens Pipeline:</strong> Alternância suave entre sensores ópticos padrão e ultra-wide."
+                    ]
+                },
+                en: {
+                    problem: "<strong>High-Performance Hands-Free Analysis:</strong> Dedicated application for automated serve and motion recording without disrupting training flow.",
+                    features: [
+                        "<strong>AI Pose Tracking:</strong> Detects serve execution and body posture in real time.",
+                        "<strong>100% Offline Voice Commands:</strong> Operates completely offline using Vosk SDK for Portuguese voice control.",
+                        "<strong>Multi-lens Support:</strong> Dynamic switching to 0.5x Ultra-Wide lens for complete court coverage.",
+                        "<strong>Translucent Sports HUD:</strong> Real-time recording status, pulse indicators, and voice feedback overlay."
+                    ],
+                    architecture: [
+                        "<strong>Google MediaPipe Tasks Vision:</strong> High-performance C++ AI framework accessed via Kotlin wrappers.",
+                        "<strong>Vosk SDK + JNA:</strong> Direct native C/C++ binding for offline microphone listening.",
+                        "<strong>CameraX Multilens Pipeline:</strong> Seamless switching between standard and ultra-wide camera sensors."
+                    ]
+                }
+            },
+            zacpoint: {
+                badge: "Corporate / Security Ecosystem",
+                title: "ZacPoint Ecosystem — Biometria & Ponto",
+                pt: {
+                    problem: "<strong>Controle de Assiduidade com Proteção Antifraude:</strong> Substituição de relógios de ponto físicos caros por dispositivos Android com biometria facial.",
+                    features: [
+                        "<strong>Reconhecimento Facial Biométrico:</strong> Validação instantânea da identidade do colaborador.",
+                        "<strong>Gestão de Banco de Horas:</strong> Cálculo e sincronização automática de entradas, pausas e saídas.",
+                        "<strong>Painel Administrativo Cloud:</strong> Monitoramento de equipes em tempo real via Firebase."
+                    ],
+                    architecture: [
+                        "<strong>Android Native (Kotlin):</strong> Estrutura limpa e integrada com bibliotecas de visão computacional facial.",
+                        "<strong>Firebase Realtime Database:</strong> Sincronização em tempo real de registros e logs corporativos."
+                    ]
+                },
+                en: {
+                    problem: "<strong>Anti-Fraud Attendance Management:</strong> Replacing expensive physical time clocks with facial biometric Android devices.",
+                    features: [
+                        "<strong>Biometric Facial Recognition:</strong> Instant employee verification.",
+                        "<strong>Automated Hour Bank:</strong> Real-time logging of clock-ins, breaks, and overtime.",
+                        "<strong>Cloud Admin Dashboard:</strong> Real-time workforce management via Firebase."
+                    ],
+                    architecture: [
+                        "<strong>Native Android (Kotlin):</strong> Clean architecture coupled with facial vision engines.",
+                        "<strong>Firebase Realtime Database:</strong> Real-time sync for enterprise records."
+                    ]
+                }
+            },
+            mapatids: {
+                badge: "Mobility / Geolocation Platform",
+                title: "MAPA TIDS — Navegação Urbana",
+                pt: {
+                    problem: "<strong>Mapeamento e Mobilidade Regional:</strong> Sistema de transporte e navegação em tempo real para otimização de rotas locais.",
+                    features: [
+                        "<strong>Roteamento em Tempo Real:</strong> Cálculo dinâmico de trajetos otimizados.",
+                        "<strong>Solicitação de Corridas Multimodal:</strong> Suporte a pedidos de transporte via carro e moto.",
+                        "<strong>Compartilhamento de Coordenadas:</strong> Atualização contínua de posição no mapa."
+                    ],
+                    architecture: [
+                        "<strong>Google Maps SDK:</strong> Integração de renderização de mapas e vetores de rota.",
+                        "<strong>Firebase Backend:</strong> Gerenciamento de solicitações e presença geográfica."
+                    ]
+                },
+                en: {
+                    problem: "<strong>Regional Transit & Mobility:</strong> Real-time transit system for local route optimization.",
+                    features: [
+                        "<strong>Real-time Routing:</strong> Dynamic calculation of optimal paths.",
+                        "<strong>Multi-modal Dispatch:</strong> Supports car and motorcycle transport modes.",
+                        "<strong>Live Location Sharing:</strong> Continuous coordinate sync on maps."
+                    ],
+                    architecture: [
+                        "<strong>Google Maps SDK:</strong> Vector rendering and spatial calculations.",
+                        "<strong>Firebase Backend:</strong> Real-time request dispatching."
+                    ]
+                }
+            },
+            gesturesynth: {
+                badge: "Computer Vision / Web Audio Engine",
+                title: "Gesture Synth / ZacSynth — Sintetizador Gestual",
+                pt: {
+                    problem: "<strong>Síntese Musical por Visão Computacional:</strong> Criação de música generativa sem necessidade de instrumentos físicos, usando apenas a câmera.",
+                    features: [
+                        "<strong>Rastreamento Gestual de Mãos/Corpo:</strong> Mapeia coordenadas no espaço em parâmetros sonoros.",
+                        "<strong>Isolamento de Stems de Áudio:</strong> Separação de faixas vocais, baixo e percussão.",
+                        "<strong>Deploy Serverless:</strong> Execução fluida hospedada na plataforma Vercel."
+                    ],
+                    architecture: [
+                        "<strong>Python & Computer Vision:</strong> Processamento de pontos gestuais e integração de modelos.",
+                        "<strong>Web Audio API:</strong> Motor de síntese sonora de baixíssima latência."
+                    ]
+                },
+                en: {
+                    problem: "<strong>Gesture-Controlled Audio Synthesis:</strong> Generative music creation without physical instruments using only camera feeds.",
+                    features: [
+                        "<strong>Hand & Body Tracking:</strong> Maps spatial coordinates into audio synthesis parameters.",
+                        "<strong>Audio Stem Separation:</strong> Isolates vocal, bass, and drum tracks.",
+                        "<strong>Serverless Deployment:</strong> Hosted on Vercel for high accessibility."
+                    ],
+                    architecture: [
+                        "<strong>Python & Vision Pipelines:</strong> Spatial keypoint tracking and model inference.",
+                        "<strong>Web Audio API:</strong> Low-latency browser audio synthesis."
+                    ]
+                }
+            },
+            zacmusic: {
+                badge: "Local Wireless / Socket Architecture",
+                title: "ZacMusic Arena — Sincronização em Eventos",
+                pt: {
+                    problem: "<strong>Sincronia Musical Multidispositivo:</strong> Conexão de múltiplos smartphones em eventos para reprodução harmônica sem depender de redes externas.",
+                    features: [
+                        "<strong>Conexão Instantânea por QR Code:</strong> Pareamento rápido entre dispositivos no local.",
+                        "<strong>Sincronização de Áudio e Luz:</strong> Efeitos visuais e sonoros alinhados via Wi-Fi local.",
+                        "<strong>Baixa Latência:</strong> Comunicação rápida por sockets locais."
+                    ],
+                    architecture: [
+                        "<strong>Socket Networking:</strong> Protocolo customizado em C/Kotlin para sincronia via Wi-Fi local.",
+                        "<strong>Android Native Engine:</strong> Controle direto da reprodução de mídia e hardware de flash."
+                    ]
+                },
+                en: {
+                    problem: "<strong>Multi-device Event Synchronization:</strong> Connecting multiple smartphones at venues for synchronized audio and light shows.",
+                    features: [
+                        "<strong>Instant QR Code Pairing:</strong> Rapid local device onboarding.",
+                        "<strong>Audio & Light Sync:</strong> Aligned visual effects over local Wi-Fi.",
+                        "<strong>Low Latency Sockets:</strong> High-speed local network communication."
+                    ],
+                    architecture: [
+                        "<strong>Socket Protocol:</strong> Custom C/Kotlin networking protocol.",
+                        "<strong>Native Media Engine:</strong> Direct hardware control for flash and audio."
+                    ]
+                }
+            }
+        };
+
+        // Open Modal Function
+        function openProjectModal(projectId) {
+            const project = projectsData[projectId];
+            if (!project) return;
+
+            const lang = currentLang;
+            const content = project[lang];
+
+            const modalContentEl = document.getElementById('modal-content');
+            modalContentEl.innerHTML = `
+                <div class="modal-header-badge">${project.badge}</div>
+                <h2 class="modal-title">${project.title}</h2>
+                
+                <div class="modal-section">
+                    <div class="modal-section-title">💡 ${lang === 'pt' ? 'Proposta de Valor & Problema Resolvido' : 'Value Proposition & Problem Solved'}</div>
+                    <p style="color: #d1d5db; font-size: 0.98rem; line-height: 1.6;">${content.problem}</p>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">🚀 ${lang === 'pt' ? 'Funcionalidades Principais' : 'Core Features'}</div>
+                    <ul class="modal-text-list">
+                        ${content.features.map(f => `<li>• ${f}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-section-title">⚙️ ${lang === 'pt' ? 'Arquitetura & Linguagens' : 'Architecture & Tech Stack'}</div>
+                    <ul class="modal-text-list">
+                        ${content.architecture.map(a => `<li>• ${a}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('project-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Function
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOverlay(e) {
+            if (e.target.id === 'project-modal') {
+                closeProjectModal();
+            }
+        }
+
+        // Escape Key Listener to Close Modal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
         // Language Switcher Logic
         const langBtn = document.getElementById('lang-toggle');
         const langText = document.getElementById('lang-text');
@@ -828,7 +1189,7 @@
             });
         });
 
-        // Intersection Observer for Reveal
+        // Intersection Observer for Reveal Animations
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
