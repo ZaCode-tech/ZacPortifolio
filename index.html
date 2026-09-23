@@ -11,7 +11,7 @@
         :root {
             --bg-primary: #0a0d14;
             --bg-secondary: #121824;
-            --bg-card: rgba(18, 24, 36, 0.82);
+            --bg-card: rgba(18, 24, 36, 0.85);
             --accent-cyan: #00f2fe;
             --accent-purple: #7f00ff;
             --accent-blue: #4facfe;
@@ -36,7 +36,7 @@
             line-height: 1.6;
         }
 
-        /* Canvas Background */
+        /* Canvas Interactive Background */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -56,7 +56,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 8%;
-            background: rgba(10, 13, 20, 0.88);
+            background: rgba(10, 13, 20, 0.9);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 1000;
@@ -151,7 +151,7 @@
         }
 
         .hero-description {
-            max-width: 750px;
+            max-width: 780px;
             color: var(--text-muted);
             font-size: 1.05rem;
             margin-bottom: 2.5rem;
@@ -219,7 +219,7 @@
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 2rem;
         }
 
@@ -341,7 +341,7 @@
             border-radius: 4px;
         }
 
-        /* Modal / Animated Popup */
+        /* Modal Animated Popup */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -369,9 +369,9 @@
             background: var(--bg-secondary);
             border: 1px solid rgba(0, 242, 254, 0.3);
             border-radius: 20px;
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
-            max-height: 85vh;
+            max-height: 88vh;
             overflow-y: auto;
             padding: 2.5rem;
             position: relative;
@@ -445,6 +445,17 @@
             gap: 0.8rem;
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        .formula-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: var(--font-code);
+            color: var(--accent-cyan);
+            margin: 0.8rem 0;
+            font-size: 0.9rem;
         }
 
         .skill-category-title {
@@ -548,26 +559,26 @@
         </div>
         <h1 class="hero-title">Isac Gonçalves da Silva</h1>
         <div class="hero-subtitle" id="typewriter"></div>
-        <p class="hero-description" data-pt="Engenheiro de Software focado na criação de ecossistemas nativos no ecossistema Android (Kotlin), soluções de Visão Computacional, Reconhecimento de Voz Offline e automação de coleta de dados." data-en="Software Engineer specializing in native Android ecosystems (Kotlin), Computer Vision solutions, Offline Voice Recognition, and automated data collection.">
-            Engenheiro de Software focado na criação de ecossistemas nativos no ecossistema Android (Kotlin), soluções de Visão Computacional, Reconhecimento de Voz Offline e automação de coleta de dados.
+        <p class="hero-description" data-pt="Engenheiro de Software focado na arquitetura de coletores de dados corporativos, Visão Computacional embarcada, automação de processos RPA e inteligência móvel no ecossistema Android Nativo." data-en="Software Engineer specializing in enterprise data collector architecture, embedded Computer Vision, RPA process automation, and mobile intelligence on Native Android.">
+            Engenheiro de Software focado na arquitetura de coletores de dados corporativos, Visão Computacional embarcada, automação de processos RPA e inteligência móvel no ecossistema Android Nativo.
         </p>
         <div class="cta-group">
-            <a href="#projects" class="btn-primary" data-pt="Ver Projetos" data-en="View Projects">Ver Projetos</a>
-            <a href="#skills" class="btn-secondary" data-pt="Conhecimentos" data-en="Skills">Conhecimentos</a>
+            <a href="#projects" class="btn-primary" data-pt="Ver Aplicativos" data-en="View Apps">Ver Aplicativos</a>
+            <a href="#skills" class="btn-secondary" data-pt="Stack Técnico" data-en="Tech Stack">Stack Técnico</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="reveal">
         <div class="section-header">
-            <h2 class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+            <h2 class="section-title" data-pt="Engenharia de Software & Visão" data-en="Software Engineering & Vision">Engenharia de Software & Visão</h2>
         </div>
         <div class="glass-card" style="cursor: default;">
-            <p style="font-size: 1.1rem; color: #d1d5db; margin-bottom: 1rem;" data-pt="Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), atuo no projeto e desenvolvimento do ecossistema de software ZaCode." data-en="Pursuing a degree in Systems Analysis and Software Development at Universidade Veiga de Almeida (UVA), engineering solutions under the ZaCode software ecosystem.">
-                Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), atuo no projeto e desenvolvimento do ecossistema de software ZaCode.
+            <p style="font-size: 1.1rem; color: #d1d5db; margin-bottom: 1rem;" data-pt="Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), lidero a arquitetura e desenvolvimento do ecossistema de soluções ZaCode." data-en="Pursuing a degree in Systems Analysis and Software Development at Universidade Veiga de Almeida (UVA), leading the software architecture and development of the ZaCode ecosystem.">
+                Graduando em Análise e Desenvolvimento de Sistemas pela Universidade Veiga de Almeida (UVA), lidero a arquitetura e desenvolvimento do ecossistema de soluções ZaCode.
             </p>
-            <p style="color: var(--text-muted);" data-pt="Meu primeiro projeto, o ZaCODE, foi projetado para substituir coletores de dados industriais dedicados que custam mais de R$ 5.000,00 por um sistema Android acessível. Além disso, desenvolvi o ZacSports (ZacVolley), uma solução avançada de análise técnica de vôlei com IA e comando de voz offline." data-en="My first application, ZaCODE, was built to replace expensive proprietary industrial data collectors costing over R$ 5,000.00 with an accessible Android software solution. Additionally, I built ZacSports (ZacVolley), an advanced volleyball performance analysis app powered by AI and offline voice control.">
-                Meu primeiro projeto, o ZaCODE, foi projetado para substituir coletores de dados industriais dedicados que custam mais de R$ 5.000,00 por um sistema Android acessível. Além disso, desenvolvi o ZacSports (ZacVolley), uma solução avançada de análise técnica de vôlei com IA e comando de voz offline.
+            <p style="color: var(--text-muted);" data-pt="Minha engenharia abrange desde a criação de coletores de dados empresariais móveis (ZaCODE) capazes de substituir coletores dedicados de R$ 5.000,00+, integrados com servidores locais e RPA (Gestão Flash), até sistemas avançados de visão computacional e inteligência de voz offline (ZacSports/ZacVolley) e ponto biométrico com folha Pro-Rata (ZacPoint)." data-en="My software engineering ranges from building enterprise mobile data collectors (ZaCODE) capable of replacing R$ 5,000+ dedicated hardware, integrated with local servers and RPA (Gestão Flash), to advanced computer vision systems with offline voice AI (ZacSports/ZacVolley) and biometric attendance with Pro-Rata payroll (ZacPoint).">
+                Minha engenharia abrange desde a criação de coletores de dados empresariais móveis (ZaCODE) capazes de substituir coletores dedicados de R$ 5.000,00+, integrados com servidores locais e RPA (Gestão Flash), até sistemas avançados de visão computacional e inteligência de voz offline (ZacSports/ZacVolley) e ponto biométrico com folha Pro-Rata (ZacPoint).
             </p>
         </div>
     </section>
@@ -580,42 +591,42 @@
         <div class="grid-2">
             
             <div class="glass-card" style="cursor: default;">
-                <div class="skill-category-title" data-pt="Android Nativo & Arquitetura" data-en="Native Android & Architecture">Android Nativo & Arquitetura</div>
+                <div class="skill-category-title" data-pt="Android Nativo & Visão Computacional" data-en="Native Android & Computer Vision">Android Nativo & Visão Computacional</div>
                 <ul class="skills-list">
-                    <li>• <strong>Kotlin:</strong> Coroutines, Asynchronous Flow, Lambdas, Delegates, Volatile, Null-Safety & Data Classes</li>
-                    <li>• <strong>CameraX Engine:</strong> PreviewView, ImageAnalysis.Analyzer, VideoCapture & Recorder</li>
-                    <li>• <strong>Interface & UI/UX:</strong> ViewBinding, Custom Canvas Views, HUDs Translúcidos & ConstraintLayout XML</li>
-                    <li>• <strong>Serviços Android:</strong> Foreground Services, Multi-threading & SharedPreferences</li>
+                    <li>• <strong>Kotlin & Java Nativo:</strong> Coroutines, Asynchronous Flow, Lambdas, Delegates, Volatile, Null-Safety & Data Classes</li>
+                    <li>• <strong>Visão Computacional & Scanner:</strong> Google ML Kit (Barcode Scanning & Pose Detection) e CameraX Engine (ImageAnalysis.Analyzer)</li>
+                    <li>• <strong>Voz & Áudio Embarcado:</strong> Vosk SDK + JNA (C/C++ offline), Speech-to-Text & TextToSpeech (TTS API)</li>
+                    <li>• <strong>Interface & Renderização:</strong> ViewBinding, Custom Canvas Overlays, HUDs Translúcidos, Tailwind CSS & jsPDF</li>
                 </ul>
             </div>
 
             <div class="glass-card" style="cursor: default;">
-                <div class="skill-category-title" data-pt="IA, Visão & Voz Offline" data-en="AI, Vision & Offline Voice">IA, Visão & Voz Offline</div>
+                <div class="skill-category-title" data-pt="Arquitetura, Servidores & RPA" data-en="Architecture, Servers & RPA">Arquitetura, Servidores & RPA</div>
                 <ul class="skills-list">
-                    <li>• <strong>Visão Computacional:</strong> Google ML Kit Pose Detection & Google MediaPipe Tasks Vision (Landmarks Corporal)</li>
-                    <li>• <strong>Reconhecimento de Voz Offline:</strong> Vosk SDK + JNA (Java Native Access) rodando nativamente em C/C++</li>
-                    <li>• <strong>Processamento Biométrico & Áudio:</strong> Biometria facial, TextToSpeech (TTS API) e separação de Stems de áudio</li>
-                    <li>• <strong>IA Generativa:</strong> Integração com Gemini API para geração e automação</li>
+                    <li>• <strong>Automação RPA (Python):</strong> Bots de injeção automatizada para portais ERP (Gestão Flash via Selenium/Playwright)</li>
+                    <li>• <strong>Servidores Locais & APIs:</strong> Node.js / Python REST/WebSocket para alta concorrência e sincronização de dados</li>
+                    <li>• <strong>Persistência & Offline-First:</strong> SQLite / Room Database em cache local para operação ininterrupta</li>
+                    <li>• <strong>Nuvem & Banco de Dados:</strong> Firebase Realtime Database, Firebase Auth & Vercel Deployments</li>
                 </ul>
             </div>
 
             <div class="glass-card" style="cursor: default;">
-                <div class="skill-category-title" data-pt="Back-End & Automação" data-en="Back-End & Automation">Back-End & Automação</div>
+                <div class="skill-category-title" data-pt="Sistemas de Gestão & Cálculo" data-en="Management Systems & Math Engines">Sistemas de Gestão & Cálculo</div>
                 <ul class="skills-list">
-                    <li>• <strong>Python Data Pipelines:</strong> Scripts para Web Scraping, mineração de dados não estruturados e automação</li>
-                    <li>• <strong>Bancos de Dados & Cloud:</strong> Firebase Realtime Database, Firebase Auth & Vercel Serverless Deployments</li>
-                    <li>• <strong>APIs & Microsserviços:</strong> Arquitetura RESTful, suporte a relatórios operacionais (Gestão Flash)</li>
-                    <li>• <strong>Ferramentas de Dev:</strong> Git, GitHub Codespaces, Gradle Kotlin DSL (.gradle.kts) e Android Studio</li>
+                    <li>• <strong>Gestão de Inventário Operacional:</strong> Mapeamento por rua/gôndola, auditoria, registro de avarias e inteligência de ruptura</li>
+                    <li>• <strong>Motor Financeiro Pro-Rata:</strong> Algoritmo de cálculo de hora-trabalhada, deduções de faltas, retenção INSS e Vale-Transporte</li>
+                    <li>• <strong>Controle de Jornada Biométrico:</strong> Autenticação facial com varrimento laser e validação visual de QR Code/Crachá</li>
+                    <li>• <strong>Relatórios Auditáveis:</strong> Geração de holerites e demonstrativos oficiais diretamente no cliente em formato PDF</li>
                 </ul>
             </div>
 
             <div class="glass-card" style="cursor: default;">
                 <div class="skill-category-title" data-pt="Hardware & Manutenção de Sistemas" data-en="Hardware & Systems Maintenance">Hardware & Manutenção de Sistemas</div>
                 <ul class="skills-list">
-                    <li>• <strong>Montagem & Dimensionamento:</strong> Arquitetura e montagem de computadores (CPUs, RAM DDR4, SSDs NVMe PCIe, fontes ATX)</li>
-                    <li>• <strong>Refrigeração & Iluminação:</strong> Instalação de sistemas ARGB, gerenciamento térmico e periféricos</li>
-                    <li>• <strong>Diagnóstico de Sistemas:</strong> Resolução de falhas de hardware, testes de estresse e substituição de componentes</li>
-                    <li>• <strong>Sistemas Operacionais:</strong> Formatação técnica, tuning de SO, drivers e gerenciamento de permissões</li>
+                    <li>• <strong>Dimensionamento & Montagem:</strong> Montagem de computadores de alta performance (CPUs, RAM DDR4, SSDs NVMe PCIe, fontes ATX)</li>
+                    <li>• <strong>Sistemas de Refrigeração:</strong> Instalação de kits de refrigeração ARGB, gerenciamento térmico e periféricos</li>
+                    <li>• <strong>Diagnóstico de Estabilidade:</strong> Resolução de falhas de hardware, análise de gargalos e substituição de componentes</li>
+                    <li>• <strong>Sistemas Operacionais:</strong> Formatação técnica, tuning de SO, drivers e controle de permissões de rede/banco</li>
                 </ul>
             </div>
 
@@ -636,24 +647,25 @@
             <!-- ZaCODE (O PRIMEIRO APLICATIVO) -->
             <div class="glass-card project-card" onclick="openProjectModal('zacode')">
                 <div>
-                    <span class="project-badge first-app">⭐ MEU PRIMEIRO APP</span>
-                    <h3 class="project-title">ZaCODE — Coletor de Dados Smart</h3>
+                    <span class="project-badge first-app">⭐ MEU PRIMEIRO APLICATIVO</span>
+                    <h3 class="project-title">ZaCODE — Coletor de Dados & RPA ERP</h3>
                     <div class="arch-highlight-box">
                         <strong data-pt="ARQUITETURA & FUNÇÃO PRINCIPAL" data-en="ARCHITECTURE & CORE FUNCTION">ARQUITETURA & FUNÇÃO PRINCIPAL</strong>
-                        <span data-pt="Coletor de dados inteligente desenvolvido para substituir aparelhos industriais dedicados. Oferece alta precisão na captura e estruturação de dados em tempo real." data-en="Smart data collector built to replace dedicated industrial devices. Offers high precision in real-time data capture and payload formatting.">
-                            Coletor de dados inteligente desenvolvido para substituir aparelhos industriais dedicados. Oferece alta precisão na captura e estruturação de dados em tempo real.
+                        <span data-pt="Sistema corporativo Android nativo que substitui coletores de dados industriais de R$ 5.000+. Possui leitura de código de barras por visão computacional, inserção por voz, servidor local e bot RPA em Python para injeção automática no Gestão Flash." data-en="Native Android enterprise system replacing R$ 5,000+ industrial scanners. Features computer vision barcode scanning, voice data entry, local server sync, and Python RPA bot for automated ERP injection into Gestão Flash.">
+                            Sistema corporativo Android nativo que substitui coletores de dados industriais de R$ 5.000+. Possui leitura de código de barras por visão computacional, inserção por voz, servidor local e bot RPA em Python para injeção automática no Gestão Flash.
                         </span>
                     </div>
                     <div class="hardware-replacement-tag">
-                        💰 <strong>Economia:</strong> Substitui coletores físicos de mais de R$ 5.000,00.
+                        💰 <strong>Impacto:</strong> Economia de R$ 5.000+ por coletor + eliminação de digitação manual ERP.
                     </div>
                 </div>
                 <div>
                     <div class="tech-tags">
                         <span class="tech-tag">Kotlin Nativo</span>
-                        <span class="tech-tag">Coleta de Dados</span>
-                        <span class="tech-tag">Android Studio</span>
-                        <span class="tech-tag">Estruturação Data</span>
+                        <span class="tech-tag">ML Kit Barcode</span>
+                        <span class="tech-tag">RPA Python</span>
+                        <span class="tech-tag">Gestão Flash ERP</span>
+                        <span class="tech-tag">Server Local</span>
                     </div>
                     <div class="click-prompt">
                         <span data-pt="Clique para abrir detalhes no Popup" data-en="Click to open popup details">Clique para abrir detalhes no Popup</span> &rarr;
@@ -664,12 +676,12 @@
             <!-- ZacSports / ZacVolley -->
             <div class="glass-card project-card" onclick="openProjectModal('zacsports')">
                 <div>
-                    <span class="project-badge">Android / Vision / Voice AI</span>
+                    <span class="project-badge">Android Nativo / Computer Vision / Voice AI</span>
                     <h3 class="project-title">ZacSports (ZacVolley)</h3>
                     <div class="arch-highlight-box">
                         <strong data-pt="ARQUITETURA & FUNÇÃO PRINCIPAL" data-en="ARCHITECTURE & CORE FUNCTION">ARQUITETURA & FUNÇÃO PRINCIPAL</strong>
-                        <span data-pt="Análise de vôlei e destaques por IA. Visão computacional (ML Kit / MediaPipe) com detecção de saltos em tempo real, comando de voz offline (Vosk SDK + JNA) e corte automático de vídeo." data-en="AI Volleyball Analysis & Highlights. Computer Vision (ML Kit/MediaPipe) with real-time jump tracking, offline voice control (Vosk SDK + JNA), and automated video trimming.">
-                            Análise de vôlei e destaques por IA. Visão computacional (ML Kit / MediaPipe) com detecção de saltos em tempo real, comando de voz offline (Vosk SDK + JNA) e corte automático de vídeo.
+                        <span data-pt="Análise de vôlei e destaques automáticos por IA. Visão computacional (ML Kit / MediaPipe) com rastreamento de saltos, comando de voz 100% offline (Vosk SDK + JNA C/C++) e recorte automático de vídeo em background." data-en="Volleyball analysis & automated AI highlights. Computer vision (ML Kit/MediaPipe) jump tracking, 100% offline voice control (Vosk SDK + JNA C/C++), and automated background video trimming.">
+                            Análise de vôlei e destaques automáticos por IA. Visão computacional (ML Kit / MediaPipe) com rastreamento de saltos, comando de voz 100% offline (Vosk SDK + JNA C/C++) e recorte automático de vídeo em background.
                         </span>
                     </div>
                 </div>
@@ -679,7 +691,7 @@
                         <span class="tech-tag">MediaPipe</span>
                         <span class="tech-tag">Vosk SDK (Offline)</span>
                         <span class="tech-tag">JNA C/C++</span>
-                        <span class="tech-tag">CameraX Ultra-Wide</span>
+                        <span class="tech-tag">VideoTrimmer</span>
                     </div>
                     <div class="click-prompt">
                         <span data-pt="Clique para abrir detalhes no Popup" data-en="Click to open popup details">Clique para abrir detalhes no Popup</span> &rarr;
@@ -690,20 +702,22 @@
             <!-- ZacPoint -->
             <div class="glass-card project-card" onclick="openProjectModal('zacpoint')">
                 <div>
-                    <span class="project-badge">Corporate / Security</span>
-                    <h3 class="project-title">ZacPoint Ecosystem</h3>
+                    <span class="project-badge">Corporate / Biometrics / Payroll Math</span>
+                    <h3 class="project-title">ZacPoint — Ponto & Folha Pro-Rata</h3>
                     <div class="arch-highlight-box">
                         <strong data-pt="ARQUITETURA & FUNÇÃO PRINCIPAL" data-en="ARCHITECTURE & CORE FUNCTION">ARQUITETURA & FUNÇÃO PRINCIPAL</strong>
-                        <span data-pt="Sistema corporativo com biometria facial para marcação de ponto e controle de assiduidade, com cálculo automático de banco de horas e sincronização cloud." data-en="Enterprise facial biometrics system for employee attendance, automated hour bank calculation, and real-time cloud synchronization.">
-                            Sistema corporativo com biometria facial para marcação de ponto e controle de assiduidade, com cálculo automático de banco de horas e sincronização cloud.
+                        <span data-pt="Controle de ponto biométrico com reconhecimento facial (laser scan) e crachá QR Code. Conta com motor matemático para folha Pro-Rata, deduções CLT/INSS/VT e geração instantânea de holerites em PDF." data-en="Biometric attendance system with facial recognition (laser scan) and QR badge mode. Features mathematical engine for Pro-Rata payroll, CLT/INSS/VT deductions, and instant PDF paystub generation.">
+                            Controle de ponto biométrico com reconhecimento facial (laser scan) e crachá QR Code. Conta com motor matemático para folha Pro-Rata, deduções CLT/INSS/VT e geração instantânea de holerites em PDF.
                         </span>
                     </div>
                 </div>
                 <div>
                     <div class="tech-tags">
-                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Kotlin Nativo</span>
                         <span class="tech-tag">Biometria Facial</span>
-                        <span class="tech-tag">Firebase Realtime DB</span>
+                        <span class="tech-tag">JavaScript ES6+</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">jsPDF Engine</span>
                     </div>
                     <div class="click-prompt">
                         <span data-pt="Clique para abrir detalhes no Popup" data-en="Click to open popup details">Clique para abrir detalhes no Popup</span> &rarr;
@@ -875,13 +889,13 @@
         const phrases = {
             pt: [
                 "Engenheiro de Software Android Nativo (Kotlin)", 
-                "Especialista em Visão Computacional Embarcada", 
-                "Desenvolvedor de Soluções de Hardware & IA"
+                "Especialista em Visão Computacional & Voz", 
+                "Desenvolvedor de Soluções RPA & Hardware"
             ],
             en: [
                 "Native Android Software Engineer (Kotlin)", 
-                "Embedded Computer Vision Specialist", 
-                "Hardware & AI Solutions Developer"
+                "Embedded Computer Vision & Voice Specialist", 
+                "RPA & Hardware Solutions Developer"
             ]
         };
         let currentLang = 'pt';
@@ -917,107 +931,121 @@
         }
         type();
 
-        // Database for Modal Details
+        // Comprehensive Database for Modal Popup Details
         const projectsData = {
             zacode: {
                 badge: "⭐ MEU PRIMEIRO APLICATIVO",
-                title: "ZaCODE — Coletor de Dados Inteligente",
+                title: "ZaCODE — Coletor de Dados & Automação RPA",
                 pt: {
-                    problem: "<strong>Substituição de Hardware de Alto Custo:</strong> Criado para atuar como um coletor de dados de alta precisão, o aplicativo substitui coletores industriais físicos e proprietários que custam mais de R$ 5.000,00 por um sistema Android nativo e altamente acessível.",
+                    problem: "<strong>Substituição de Hardware de Alto Custo (R$ 5.000+):</strong> O ZaCODE foi projetado como um sistema corporativo completo para transformar smartphones em coletores de dados portáteis de alta precisão para logística, estoque e varejo. Ele elimina a necessidade de comprar coletores industriais caros, integrando a contagem de campo diretamente ao ERP da empresa via automação robótica.",
                     features: [
-                        "<strong>Captura e Estruturação de Dados:</strong> Interface e motor de processamento direto para coleta contínua e sem perdas de informações operacionais.",
-                        "<strong>Alta Eficiência Tecnológica:</strong> Redução drástica do custo de aquisição de equipamentos de campo por meio do uso de dispositivos móveis comuns.",
-                        "<strong>Ecosistema Base:</strong> Foi a aplicação fundadora que deu origem aos padrões arquiteturais de todos os projetos sob a marca ZaCode."
+                        "<strong>Coleta Multimodal de Dados:</strong> Leitura instantânea de códigos de barras (EAN-13, ITF-14, QR Code) pela câmera via Visão Computacional otimizada, com suporte a entrada e comando por voz (Speech-to-Text) com filtragem de ruído ambiente para operação hands-free.",
+                        "<strong>Gestão de Inventário & Auditoria:</strong> Mapeamento por rua, prateleira ou setor; auditoria de gôndola com comparação direta entre etiquetas e banco de dados; e registro imediato de produtos danificados, vencidos ou avariados.",
+                        "<strong>Inteligência Operacional & Reposição:</strong> Identificação automatizada de rupturas e cálculo de necessidade de reabastecimento com geração automática de ordens de transferência para o Centro de Distribuição (CD).",
+                        "<strong>Servidor Dedicado Local (Offline-First):</strong> Operação fluida mesmo sem internet, armazenando contagens no SQLite/Room local e centralizando a conciliação em servidor dedicado na rede local.",
+                        "<strong>Automação RPA no Portal Gestão Flash:</strong> Bot em Python que resgata os dados do servidor local e executa a injeção robótica dos formulários de estoque no ERP Gestão Flash, zerando a digitação manual."
                     ],
                     architecture: [
-                        "<strong>Linguagem:</strong> Kotlin Nativo (focado em estabilidade e segurança de memória).",
-                        "<strong>Persistência & Processamento:</strong> Estrutura de dados local otimizada e comunicação com armazenamento interno.",
-                        "<strong>Android SDK:</strong> Gerenciamento eficiente de ciclo de vida e economia de bateria em tarefas de coleta prolongada."
+                        "<strong>Frontend Android Nativo:</strong> Desenvolvido em Kotlin / Java com Android SDK Nativo.",
+                        "<strong>Visão Computacional:</strong> Google ML Kit Barcode Scanning + CameraX Engine para leitura em baixa luminosidade, ângulos inclinados e códigos danificados.",
+                        "<strong>Backend & Servidor Local:</strong> API REST/WebSocket em Node.js ou Python para comunicação de alta concorrência e sincronização JSON/HTTP.",
+                        "<strong>Motor de Automação RPA:</strong> Scripts em Python (Selenium / Playwright / Requests) para login e preenchimento auditável no portal Gestão Flash."
                     ]
                 },
                 en: {
-                    problem: "<strong>Replacing Expensive Proprietary Hardware:</strong> Built to function as a high-precision data collector, replacing dedicated physical industrial collectors costing over R$ 5,000.00 with an accessible native Android software solution.",
+                    problem: "<strong>Replacing High-Cost Industrial Hardware (R$ 5,000+):</strong> ZaCODE was engineered as an enterprise system converting Android smartphones into high-precision mobile data collectors for inventory, logistics, and retail. It eliminates expensive proprietary hardware while injecting field counts directly into enterprise ERPs via RPA.",
                     features: [
-                        "<strong>Data Capture & Payload Formatting:</strong> Engine engineered for continuous, lossless operational data collection.",
-                        "<strong>High Cost Efficiency:</strong> Drastically reduces field hardware costs by leveraging standard mobile devices.",
-                        "<strong>Foundational Platform:</strong> The founding application that established the architecture for the entire ZaCode ecosystem."
+                        "<strong>Multimodal Data Collection:</strong> Computer vision barcode scanning (EAN-13, ITF-14, QR Code) via CameraX, combined with noise-filtered Speech-to-Text voice entry for hands-free warehouse operation.",
+                        "<strong>Inventory Management & Auditing:</strong> Aisle/shelf mapping, shelf auditing comparing label prices to core DB, and instant defect/expiration tagging.",
+                        "<strong>Operational Intelligence:</strong> Automated stockout detection and reorder point calculation with direct transfer requests generated for Distribution Centers (DC).",
+                        "<strong>Dedicated Local Server (Offline-First):</strong> Local SQLite/Room storage caching with continuous synchronization to local network servers.",
+                        "<strong>Python RPA for Gestão Flash ERP:</strong> Robotic process automation scripts injecting consolidated inventory reports directly into the Gestão Flash ERP portal."
                     ],
                     architecture: [
-                        "<strong>Language:</strong> Native Kotlin (focused on thread safety and low memory overhead).",
-                        "<strong>Data Persistence:</strong> Optimized local storage pipelines.",
-                        "<strong>Android SDK:</strong> Battery-efficient lifecycle management during extended collection cycles."
+                        "<strong>Android Native Client:</strong> Native Kotlin / Java codebase.",
+                        "<strong>Computer Vision:</strong> Google ML Kit Barcode Scanning + CameraX Engine.",
+                        "<strong>Local Server Backend:</strong> Node.js / Python REST/WebSocket concurrency layer.",
+                        "<strong>Automation Engine (RPA):</strong> Python scripts (Selenium/Playwright) automating ERP portal data entry."
                     ]
                 }
             },
             zacsports: {
                 badge: "Android Nativo / Visão Computacional / Voz AI",
-                title: "ZacSports (ZacVolley) — Análise Esportiva",
+                title: "ZacSports (ZacVolley) — Análise Esportiva & Highlights",
                 pt: {
-                    problem: "<strong>Análise Técnica e Gravação Inteligente no Vôlei:</strong> Gravação contínua sem necessidade de edição manual e sem interromper os treinos do atleta ou treinador.",
+                    problem: "<strong>Análise Técnica e Gravação Automatizada sem Operador:</strong> Desenvolvido especificamente para treinos e partidas de Vôlei, eliminando a necessidade de alguém filmando e editando horas de vídeo.",
                     features: [
-                        "<strong>Análise de Movimento e Poses por IA:</strong> Identifica pontos corporais (landmarks de ombros, quadris, joelhos e tornozelos) e rastreia o movimento em tempo real.",
-                        "<strong>Detecção Automática de Saltos:</strong> Identifica saltos em zonas específicas da quadra (ex: ataque ou bloqueio na rede) e marca os momentos automaticamente.",
-                        "<strong>Corte Automático de Highlights (VideoTrimmer):</strong> Grava a partida inteira e recorta automaticamente apenas os trechos marcados (ex: 10s antes e 30s depois), salvando no celular e descartando o vídeo bruto.",
-                        "<strong>Controle de Voz 'Mãos Livres' Offline:</strong> Reconhece comandos em português ('Vôlei', 'Ponto', 'Perda') sem internet via Vosk SDK + JNA.",
-                        "<strong>Sintetizador de Voz (TTS):</strong> Respostas sonoras em tempo real ('Jogada marcada!', 'Vídeo descartado').",
-                        "<strong>Calibração de Quadra (ROI / Hitbox):</strong> Ajuste visual das linhas da rede e do chão para definir a área de monitoramento da IA.",
-                        "<strong>Controle de Câmera:</strong> Suporte a lentes Ultra-Wide (0.5x), zoom óptico e gravação contínua sem superaquecimento."
+                        "<strong>Análise de Poses por Visão Computacional:</strong> Processa o feed da câmera em tempo real identificando landmarks de ombros, quadris, joelhos e tornozelos dos atletas.",
+                        "<strong>Detecção Automática de Saltos:</strong> Identifica saltos no bloqueio ou ataque em zonas específicas e marca a jogada automaticamente.",
+                        "<strong>Corte de Highlights em Background (Modo Match):</strong> Grava a partida e recorta apenas os trechos importantes (ex: -10s / +30s) via VideoTrimmer em segundo plano, salvando os momentos e descartando o vídeo bruto para poupar espaço.",
+                        "<strong>Comando de Voz 100% Offline:</strong> Operação hands-free com comandos em português ('Vôlei', 'Ponto', 'Perda') sem dependência de internet via Vosk SDK + JNA C/C++.",
+                        "<strong>Sintetizador de Voz (TTS):</strong> Feedback falado em tempo real ('Jogada marcada!', 'Vídeo descartado').",
+                        "<strong>Calibração de Quadra (ROI / Hitbox):</strong> Ajuste visual das linhas da rede e do chão para delimitar a zona de monitoramento da IA.",
+                        "<strong>Controle Avançado de Câmera:</strong> Suporte a lente Ultra-Wide (0.5x), zoom óptico, flash e gerenciamento térmico."
                     ],
                     architecture: [
                         "<strong>Linguagem:</strong> Kotlin 100% Nativo (Coroutines, Delegates, Volatile, Null-Safety, Data Classes).",
-                        "<strong>Google ML Kit Pose Detection & MediaPipe Tasks Vision:</strong> Processamento de visão computacional em threads de segundo plano para garantir que a PreviewView não trave.",
-                        "<strong>Android CameraX:</strong> Fluxo da câmera (Camera Preview), análise frame a frame (ImageAnalysis.Analyzer) e gravação (Recorder / VideoCapture).",
-                        "<strong>Vosk SDK + JNA:</strong> Biblioteca nativa em C/C++ conectada ao Kotlin via JNA para escuta offline do microfone.",
-                        "<strong>Foreground Service (VoiceService):</strong> Mantém o reconhecimento de voz ativo em segundo plano durante toda a partida.",
-                        "<strong>ViewBinding & Custom Canvas (PoseOverlayView):</strong> Renderização transparente da Hitbox e esqueleto dos atletas sobre o vídeo."
+                        "<strong>Google ML Kit Pose Detection & MediaPipe Tasks Vision:</strong> Algoritmos de estimação de pose executados em threads assíncronas dedicadas.",
+                        "<strong>Android CameraX:</strong> Pipeline da câmera (PreviewView, ImageAnalysis.Analyzer e VideoCapture / Recorder).",
+                        "<strong>Vosk SDK + JNA:</strong> Conexão nativa C/C++ para reconhecimento de fala offline.",
+                        "<strong>Foreground Service (VoiceService):</strong> Serviço ativo garantindo baixa latência na captura de áudio.",
+                        "<strong>Custom Canvas View (PoseOverlayView):</strong> Renderização transparente da Hitbox da rede e do esqueleto dos jogadores sobre o vídeo."
                     ]
                 },
                 en: {
-                    problem: "<strong>Volleyball Technical Analysis & Smart Highlights:</strong> Continuous recording without manual editing or training disruption.",
+                    problem: "<strong>Automated Sports Analysis & Camera Operator Replacement:</strong> Dedicated volleyball analytics solution capturing match highlights automatically without manual video editing.",
                     features: [
-                        "<strong>AI Pose Tracking:</strong> Detects shoulder, hip, knee, and ankle landmarks in real time.",
-                        "<strong>Automated Jump Detection:</strong> Triggers highlight markers upon detecting jumps in target net zones.",
-                        "<strong>Background Video Trimming:</strong> Trims and saves only highlight clips (e.g., -10s / +30s) while discarding raw video.",
-                        "<strong>100% Offline Voice Control:</strong> Portuguese voice recognition ('Volley', 'Point', 'Discard') powered by Vosk SDK + JNA.",
-                        "<strong>TTS Audio Feedback:</strong> Live spoken confirmations ('Play saved!', 'Video discarded').",
-                        "<strong>Court ROI Calibration:</strong> Custom net and floor boundaries for spatial AI accuracy.",
-                        "<strong>Camera Engine:</strong> Ultra-Wide (0.5x) lens selection, optical zoom, and thermal-throttling prevention."
+                        "<strong>Computer Vision Pose Landmarks:</strong> Tracks shoulder, hip, knee, and ankle keypoints across players in real time.",
+                        "<strong>Automated Jump Detection:</strong> Automatically flags highlight markers upon detecting jumps near the net hitbox.",
+                        "<strong>Background Video Trimming:</strong> Background VideoTrimmer extracts highlight segments (-10s / +30s) directly to the gallery while discarding raw footage.",
+                        "<strong>100% Offline Voice Commands:</strong> Hands-free Portuguese speech control ('Volley', 'Point', 'Discard') using Vosk SDK + JNA.",
+                        "<strong>Text-to-Speech (TTS) Feedback:</strong> Real-time audio spoken confirmations.",
+                        "<strong>Court Calibration (ROI):</strong> Visual overlay configuration for net and floor tracking boundaries.",
+                        "<strong>CameraX Control:</strong> Ultra-Wide 0.5x lens support, optical zoom, and thermal throttling prevention."
                     ],
                     architecture: [
-                        "<strong>Language:</strong> 100% Native Kotlin (Coroutines, Delegates, Volatile, Null-Safety).",
-                        "<strong>Google ML Kit & MediaPipe:</strong> Async background thread execution for lag-free CameraX previews.",
-                        "<strong>Android CameraX:</strong> ImageAnalysis.Analyzer and VideoCapture pipeline.",
-                        "<strong>Vosk SDK + JNA:</strong> C/C++ native bindings for offline mic processing.",
-                        "<strong>Foreground Service:</strong> Uninterrupted background speech processing during games.",
-                        "<strong>Custom Canvas Overlay:</strong> Real-time net hitbox and skeletal rendering over camera."
+                        "<strong>Language:</strong> Native Kotlin (Coroutines, Delegates, Volatile, Null-Safety).",
+                        "<strong>ML Kit & MediaPipe Vision:</strong> Async multi-threading pose inference.",
+                        "<strong>Android CameraX:</strong> Frame analysis and high-definition video capture.",
+                        "<strong>Vosk SDK + JNA:</strong> Native C/C++ bindings for offline voice parsing.",
+                        "<strong>Foreground Service:</strong> Uninterrupted background microphone processing.",
+                        "<strong>Custom Overlay Canvas:</strong> Real-time net hitbox and skeletal drawing over preview."
                     ]
                 }
             },
             zacpoint: {
-                badge: "Corporate / Security Ecosystem",
-                title: "ZacPoint Ecosystem — Biometria & Ponto",
+                badge: "Corporate / Biometrics / Payroll Engine",
+                title: "ZacPoint — Gestão de Ponto & Folha Pro-Rata",
                 pt: {
-                    problem: "<strong>Assiduidade Corporativa Antifraude:</strong> Sistema de marcação de ponto facial para empresas.",
+                    problem: "<strong>Controle de Ponto Inteligente e Automação de Holerites:</strong> Solução integrada para registro diário de jornada, autenticação biométrica e apuração financeira automática para departamento pessoal.",
                     features: [
-                        "<strong>Biometria Facial:</strong> Autenticação de colaboradores em tempo real.",
-                        "<strong>Banco de Horas Automático:</strong> Registro de pausas, entradas e cálculo de jornada.",
-                        "<strong>Painel Cloud:</strong> Gestão de equipe centralizada."
+                        "<strong>Terminal de Ponto Multimodal:</strong> Modo Facial com animação de varrimento (laser scanning) e autenticação biométrica, além do Modo Crachá com leitura visual de QR Code.",
+                        "<strong>Portal do Colaborador:</strong> Painel individual seguro para consulta de horas acumuladas e histórico de presenças por matrícula.",
+                        "<strong>Motor de Cálculo de Folha Pro-Rata:</strong> Fórmula matemática automatizada baseada na carga de 220h para obtenção do salário líquido exato com descontos regulamentares (Faltas CLT, retenção progressiva de INSS e limite legal de 6% para Vale-Transporte).",
+                        "<strong>Geração de Holerites em PDF:</strong> Emissão no próprio cliente (jsPDF) de demonstrativos oficiais de pagamento contendo cabeçalho institucional, identificação e tabela com códigos de lançamento (001 Salário, 112 Faltas, 687 VT, 903 INSS)."
                     ],
                     architecture: [
-                        "<strong>Kotlin & Android Studio:</strong> Desenvolvimento nativo seguro.",
-                        "<strong>Firebase Realtime Database:</strong> Sincronização cloud imediata."
+                        "<strong>Android Nativo (Kotlin & CameraX):</strong> Aplicação móbile para o terminal com captura de imagem e gestão de estado.",
+                        "<strong>Web Frontend & Simulador:</strong> JavaScript ES6+, HTML5 e Tailwind CSS (#0B0F19, #06B6D4) para o portal web.",
+                        "<strong>jsPDF Engine:</strong> Biblioteca para vetorização de holerites em PDF sem necessidade de processamento server-side.",
+                        "<strong>Fórmula Matemática da Folha:</strong>",
+                        "<div class='formula-box'>Valor da Hora = Salário Base / 220<br>Salário Final = Horas Trabalhadas × Valor da Hora</div>"
                     ]
                 },
                 en: {
-                    problem: "<strong>Anti-Fraud Attendance Management:</strong> Facial biometric time-clock system.",
+                    problem: "<strong>Biometric Time Clock & Automated Payroll Engine:</strong> Integrated system for employee attendance tracking, facial verification, and automated pro-rata salary calculation.",
                     features: [
-                        "<strong>Facial Recognition:</strong> Real-time identity verification.",
-                        "<strong>Automated Hour Bank:</strong> Time logs and break calculation.",
-                        "<strong>Cloud Portal:</strong> Centralized team management."
+                        "<strong>Multimodal Attendance Terminal:</strong> Facial Recognition Mode with laser scanning animation alongside QR Badge Scanning Mode.",
+                        "<strong>Employee Portal:</strong> Secure individual portal for checking attendance logs and accumulated hours.",
+                        "<strong>Pro-Rata Payroll Mathematical Engine:</strong> Automated salary calculations based on 220 monthly hours, with exact CLT absence deductions, progressive INSS tax, and 6% Transportation Voucher caps.",
+                        "<strong>PDF Paystub Generation:</strong> Browser-side PDF generation (jsPDF) producing official paystubs with code items (001 Salary, 112 Absences, 687 VT, 903 INSS)."
                     ],
                     architecture: [
-                        "<strong>Kotlin & Android Studio:</strong> Secure native architecture.",
-                        "<strong>Firebase Realtime DB:</strong> Instant cloud data synchronization."
+                        "<strong>Native Android (Kotlin & CameraX):</strong> Mobile terminal app for biometric image capture.",
+                        "<strong>Web Frontend:</strong> JavaScript ES6+, HTML5, and Tailwind CSS.",
+                        "<strong>jsPDF Engine:</strong> Client-side PDF generation engine.",
+                        "<strong>Payroll Mathematical Formula:</strong>",
+                        "<div class='formula-box'>Hourly Rate = Base Salary / 220<br>Final Salary = Hours Worked × Hourly Rate</div>"
                     ]
                 }
             },
@@ -1025,79 +1053,73 @@
                 badge: "Mobility / Geolocation Platform",
                 title: "MAPA TIDS — Navegação Urbana",
                 pt: {
-                    problem: "<strong>Mobilidade Regional:</strong> Navegação e mapeamento dinâmico de transporte.",
+                    problem: "<strong>Mobilidade e Mapeamento Regional:</strong> Navegação urbana em tempo real para otimização de transporte local.",
                     features: [
-                        "<strong>Rotas em Tempo Real:</strong> Trajetos otimizados.",
-                        "<strong>Despacho Multimodal:</strong> Opções de carro e moto.",
-                        "<strong>Localização Viva:</strong> Compartilhamento dinâmico de GPS."
+                        "<strong>Cálculo de Rotas Dinâmico:</strong> Vetores de rota em tempo real via Google Maps SDK.",
+                        "<strong>Despacho Multimodal:</strong> Atendimento por categorias (Carro e Moto).",
+                        "<strong>Compartilhamento Live:</strong> Transmissão de coordenadas GPS."
                     ],
                     architecture: [
-                        "<strong>Google Maps SDK:</strong> Renderização vetorial e cálculo espacial.",
-                        "<strong>Firebase:</strong> Gestão de presença geográfica."
+                        "<strong>Google Maps SDK & Firebase:</strong> Renderização gráfica e comunicação em tempo real."
                     ]
                 },
                 en: {
-                    problem: "<strong>Regional Mobility:</strong> Live navigation and transit mapping.",
+                    problem: "<strong>Regional Transit Mobility:</strong> Live navigation and mapping for regional transport.",
                     features: [
-                        "<strong>Real-time Routing:</strong> Optimized path calculations.",
-                        "<strong>Multimodal Dispatch:</strong> Supports car and motorcycle modes.",
-                        "<strong>Live Coordinates:</strong> Real-time GPS sharing."
+                        "<strong>Dynamic Routing:</strong> Real-time route optimization via Google Maps SDK.",
+                        "<strong>Multimodal Dispatch:</strong> Transport requests for cars and motorcycles.",
+                        "<strong>Live Coordinates:</strong> Real-time GPS location sharing."
                     ],
                     architecture: [
-                        "<strong>Google Maps SDK:</strong> Vector rendering and spatial math.",
-                        "<strong>Firebase:</strong> Real-time geographic presence."
+                        "<strong>Google Maps SDK & Firebase:</strong> Vector rendering and real-time backend."
                     ]
                 }
             },
             gesturesynth: {
-                badge: "Computer Vision / Web Audio",
+                badge: "Computer Vision / Web Audio Engine",
                 title: "Gesture Synth / ZacSynth",
                 pt: {
-                    problem: "<strong>Música Generativa por Gestos:</strong> Síntese de som via câmera sem instrumentos.",
+                    problem: "<strong>Música Generativa por Visão Computacional:</strong> Síntese sonora controlada por gestos corporais sem instrumentos físicos.",
                     features: [
-                        "<strong>Tracking Gestual:</strong> Converte movimentos de mão/corpo em som.",
-                        "<strong>Isolamento de Stems:</strong> Separação de vocais e instrumentos."
+                        "<strong>Rastreamento Gestual:</strong> Converte coordenadas corporais em parâmetros de sintetizador.",
+                        "<strong>Isolamento de Stems:</strong> Separação de faixas musicais (vocal, baixo, bateria)."
                     ],
                     architecture: [
-                        "<strong>Python & Visão Computacional:</strong> Detecção espacial de pontos.",
-                        "<strong>Web Audio API:</strong> Síntese de baixa latência."
+                        "<strong>Python & Web Audio API:</strong> Processamento gestual e síntese sonora de baixa latência hospedada na Vercel."
                     ]
                 },
                 en: {
-                    problem: "<strong>Gestural Music Synthesis:</strong> Generative audio creation via camera.",
+                    problem: "<strong>Gestural Audio Synthesis:</strong> Camera-driven generative synthesizer without physical instruments.",
                     features: [
-                        "<strong>Gesture Tracking:</strong> Maps motion into sound parameters.",
-                        "<strong>Stem Isolation:</strong> Separates vocals and instruments."
+                        "<strong>Gesture Tracking:</strong> Maps spatial body coordinates to audio synthesis.",
+                        "<strong>Stem Isolation:</strong> Audio track separation for vocals and instruments."
                     ],
                     architecture: [
-                        "<strong>Python & Computer Vision:</strong> Spatial point detection.",
-                        "<strong>Web Audio API:</strong> Low-latency web audio generation."
+                        "<strong>Python & Web Audio API:</strong> Low-latency audio processing hosted on Vercel."
                     ]
                 }
             },
             zacmusic: {
                 badge: "Local Wireless / Sockets",
-                title: "ZacMusic Arena — Sincronia Multidispositivo",
+                title: "ZacMusic Arena — Sincronia de Shows",
                 pt: {
-                    problem: "<strong>Sincronia em Eventos:</strong> Conexão de celulares em rede local para shows.",
+                    problem: "<strong>Sincronização Multidispositivo em Eventos:</strong> Conexão de smartphones via Wi-Fi local para shows de luz e som harmônicos.",
                     features: [
-                        "<strong>Pareamento QR Code:</strong> Conexão instantânea.",
-                        "<strong>Áudio e Luz Sincronizados:</strong> Efeitos via Wi-Fi local."
+                        "<strong>Pareamento por QR Code:</strong> Conexão instantânea de aparelhos na arena.",
+                        "<strong>Baixa Latência:</strong> Sincronia de áudio e flash via Sockets locais."
                     ],
                     architecture: [
-                        "<strong>Socket Networking:</strong> Protocolo de baixa latência em Kotlin/C.",
-                        "<strong>Media Engine:</strong> Sincronia de hardware de áudio e flash."
+                        "<strong>Kotlin & Local Sockets:</strong> Comunicação contínua sem depender da internet."
                     ]
                 },
                 en: {
-                    problem: "<strong>Event Synchronization:</strong> Local network multi-device music sync.",
+                    problem: "<strong>Multi-Device Venue Sync:</strong> Local network synchronization for interactive venue light and sound shows.",
                     features: [
-                        "<strong>QR Code Onboarding:</strong> Instant local connection.",
-                        "<strong>Audio & Lighting Sync:</strong> Matched effects over local Wi-Fi."
+                        "<strong>QR Code Pairing:</strong> Instant local onboarding.",
+                        "<strong>Low-Latency Sockets:</strong> Matched audio and flash execution."
                     ],
                     architecture: [
-                        "<strong>Socket Networking:</strong> Low-latency Kotlin/C socket protocol.",
-                        "<strong>Media Engine:</strong> Hardware audio and flash sync."
+                        "<strong>Kotlin & Local Sockets:</strong> Local Wi-Fi networking protocol."
                     ]
                 }
             }
@@ -1117,19 +1139,19 @@
                 <h2 class="modal-title">${project.title}</h2>
                 
                 <div class="modal-section">
-                    <div class="modal-section-title">💡 ${lang === 'pt' ? 'Proposta de Valor' : 'Value Proposition'}</div>
+                    <div class="modal-section-title">💡 ${lang === 'pt' ? 'Proposta de Valor & Problema Resolvido' : 'Value Proposition & Problem Solved'}</div>
                     <p style="color: #d1d5db; font-size: 0.98rem; line-height: 1.6;">${content.problem}</p>
                 </div>
 
                 <div class="modal-section">
-                    <div class="modal-section-title">🚀 ${lang === 'pt' ? 'Funcionalidades Principais' : 'Core Features'}</div>
+                    <div class="modal-section-title">🚀 ${lang === 'pt' ? 'Funcionalidades & Capacidades do Sistema' : 'System Capabilities & Features'}</div>
                     <ul class="modal-text-list">
                         ${content.features.map(f => `<li>• ${f}</li>`).join('')}
                     </ul>
                 </div>
 
                 <div class="modal-section">
-                    <div class="modal-section-title">⚙️ ${lang === 'pt' ? 'Arquitetura & Tecnologias' : 'Architecture & Tech Stack'}</div>
+                    <div class="modal-section-title">⚙️ ${lang === 'pt' ? 'Arquitetura de Software & Tecnologias' : 'Software Architecture & Tech Stack'}</div>
                     <ul class="modal-text-list">
                         ${content.architecture.map(a => `<li>• ${a}</li>`).join('')}
                     </ul>
